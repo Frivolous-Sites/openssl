@@ -1,15 +1,13 @@
-[![AppVeyor](https://ci.appveyor.com/api/projects/status/mjujhh01coab3fsw/branch/OQS-OpenSSL_1_1_1-stable?svg=true)](https://ci.appveyor.com/project/dstebila/openssl/branch/OQS-OpenSSL_1_1_1-stable), [![CircleCI](https://circleci.com/gh/open-quantum-safe/openssl/tree/OQS-OpenSSL_1_1_1-stable.svg?style=svg)](https://circleci.com/gh/open-quantum-safe/openssl/tree/OQS-OpenSSL_1_1_1-stable)
-
 OQS-OpenSSL\_1\_1\_1
 ==================================
 
 ## <span style="color: red;">Warning</span>
 
-<b><span style="color: red;">The OpenSSL project has announced that its support for OpenSSL 1.1.1 will stop in September, 2023, and that all users should switch to OpenSSL 3.  Consequently, the Open Quantum Safe project is discontinuing development of our OQS-OpenSSL 1.1.1 fork.  No more releases are planned for OQS-OpenSSL 1.1.1.  The [OQS Provider for OpenSSL 3](https://github.com/open-quantum-safe/oqs-provider/) provides full support for post-quantum key exchange and authentication in TLS 1.3, X.509, and S/MIME.</span></b>
+<b>Although the Open Quantum Safe project has officially stopped supporting OpenSSL, I have decided to continue the most basic maintenance of OpenSSL, which is to keep it in sync with the algorithms in liboqs. This will enable us to use [QUIC](tree/OQS-OpenSSL_1_1_1-stable/quic). <span style="color: red;">THIS IS UNSAFE!!!</span></b>
 
 ---
 
-[OpenSSL](https://openssl.org/) is an open-source implementation of the TLS protocol and various cryptographic algorithms ([View the original README](https://github.com/open-quantum-safe/openssl/blob/OQS-OpenSSL_1_1_1-stable/README).)
+[OpenSSL](https://openssl.org/) is an open-source implementation of the TLS protocol and various cryptographic algorithms ([View the original README](https://github.com/Frivolous-Sites/openssl/blob/OQS-OpenSSL_1_1_1-stable/README).)
 
 OQS-OpenSSL\_1\_1\_1 is a fork of OpenSSL 1.1.1 that adds quantum-safe key exchange and authentication algorithms using [liboqs](https://github.com/open-quantum-safe/liboqs) for prototyping and evaluation purposes. This fork is not endorsed by the OpenSSL project.
 
@@ -74,8 +72,6 @@ Some of the KEMs provided in liboqs do provide IND-CCA security; others do not (
 
 ### Supported Algorithms
 
-If an algorithm is provided by liboqs but is not listed below, it might still be possible to use it in the fork through [either one of two ways](https://github.com/open-quantum-safe/openssl/wiki/Using-liboqs-algorithms-not-in-the-fork).
-
 #### Key Exchange
 
 The following quantum-safe algorithms from liboqs are supported (assuming they have been enabled in liboqs):
@@ -99,7 +95,7 @@ Note that algorithms marked with a dagger (†) have large stack usage and may c
 
 #### Authentication
 
-The following digital signature algorithms from liboqs are supported by the fork. **Note that not all variants of all algorithms are enabled by default; algorithms that are enabled by default are marked with an asterisk, and should you wish to enable additional variants, consult [the "Code Generation" section of the documentation in the wiki](https://github.com/open-quantum-safe/openssl/wiki/Using-liboqs-algorithms-not-in-the-fork#code-generation)**.
+The following digital signature algorithms from liboqs are supported by the fork. **Note that not all variants of all algorithms are enabled by default.
 
 <!--- OQS_TEMPLATE_FRAGMENT_LIST_SIGS_START -->
 - **CRYSTALS-Dilithium**:`dilithium2`\*, `dilithium3`\*, `dilithium5`\*
@@ -117,6 +113,12 @@ The following hybrid algorithms are supported; they combine a quantum-safe algor
 For example, since `dilithium2` [claims NIST L2 security](https://github.com/open-quantum-safe/liboqs/blob/main/docs/algorithms/sig/dilithium.md), the hybrids `rsa3072_dilithium2` and `p256_dilithium2` are available.
 
 For further information about each algorithm's strengths and limitations, see the [documentation markdown files at liboqs](https://github.com/open-quantum-safe/liboqs/tree/main/docs/algorithms/sig).
+
+#### Use liboqs Algorithms Not in the Fork
+
+1. Add the algorithm metadata to oqs-template/generate.yml (following the conventions established therein)
+2. Run `python3 oqs-template/generate.py`
+3. Run `make generate_crypto_objects` to re-generate the object-related files (obj_dat.h, obj_mac.num, obj_mac.h)
 
 ## Quickstart
 
@@ -138,7 +140,7 @@ On **macOS**, you need to install the following packages using `brew` (or a pack
 
 Then, get source code of this fork (`<OPENSSL_DIR>` is a directory of your choosing):
 
-	git clone --branch OQS-OpenSSL_1_1_1-stable https://github.com/open-quantum-safe/openssl.git <OPENSSL_DIR>
+	git clone --branch OQS-OpenSSL_1_1_1-stable https://github.com/Frivolous-Sites/openssl.git <OPENSSL_DIR>
 
 #### Step 1: Build and install liboqs
 
@@ -147,7 +149,7 @@ The following instructions will download and build liboqs, then install it into 
 	git clone --branch main https://github.com/open-quantum-safe/liboqs.git
 	cd liboqs
 	mkdir build && cd build
-	cmake -GNinja -DCMAKE_INSTALL_PREFIX=<OPENSSL_DIR>/oqs ..
+	cmake -GNinja -DCMAKE_INSTALL_PREFIX=<OPENSSL_DIR>/oqs -DOQS_USE_OPENSSL=OFF ..
 	ninja
 	ninja install
 
@@ -178,11 +180,11 @@ on **macOS** (M1 / arm64), run:
 
 #### Step 0
 
-Make sure you can build the unmodified version of OpenSSL by following the instructions in [INSTALL](https://github.com/open-quantum-safe/openssl/blob/OQS-OpenSSL_1_1_1-stable/INSTALL) and [NOTES.WIN](https://github.com/open-quantum-safe/openssl/blob/OQS-OpenSSL_1_1_1-stable/NOTES.WIN).
+Make sure you can build the unmodified version of OpenSSL by following the instructions in [INSTALL](https://github.com/Frivolous-Sites/openssl/blob/OQS-OpenSSL_1_1_1-stable/INSTALL) and [NOTES.WIN](https://github.com/Frivolous-Sites/openssl/blob/OQS-OpenSSL_1_1_1-stable/NOTES.WIN).
 
 Then, get the fork source code (`<OPENSSL_DIR>` is a directory of your choosing):
 
-	git clone --branch OQS-OpenSSL_1_1_1-stable https://github.com/open-quantum-safe/openssl.git <OPENSSL_DIR>
+	git clone --branch OQS-OpenSSL_1_1_1-stable https://github.com/Frivolous-Sites/openssl.git <OPENSSL_DIR>
 
 The above command uses `git`, but alternatively, an archive of the source code can be downloaded and expanded into `<OPENSSL_DIR>`
 
@@ -194,7 +196,7 @@ The following instructions will download (using git, alternatively, [download an
 	cd liboqs
 	mkdir build
 	cd build
-	cmake -GNinja -DCMAKE_INSTALL_PREFIX=<OPENSSL_DIR>\oqs ..
+	cmake -GNinja -DCMAKE_INSTALL_PREFIX=<OPENSSL_DIR>\oqs -DOQS_USE_OPENSSL=OFF ..
 	ninja
 	ninja install
 
@@ -310,7 +312,7 @@ We also have [docker-based performance test environments in the `oqs-demos` subp
 
 #### Integration testing
 
-We have various `pytest` test suites for the TLS and CMS functionalities. Consult the [oqs-test/ README](https://github.com/open-quantum-safe/openssl/blob/OQS-OpenSSL_1_1_1-stable/oqs-test/README.md) for more information.
+We have various `pytest` test suites for the TLS and CMS functionalities. Consult the [oqs-test/ README](https://github.com/Frivolous-Sites/openssl/blob/OQS-OpenSSL_1_1_1-stable/oqs-test/README.md) for more information.
 
 ## Third Party Integrations
 
@@ -318,11 +320,11 @@ Various third-party software applications, such as [nginx](https://www.nginx.com
 
 ## Contributing
 
-Contributions are gratefully welcomed. See our [Contributing Guide](https://github.com/open-quantum-safe/openssl/wiki/Contributing-Guide) for more details.
+Contributions are gratefully welcomed. See our [Contributing Guide](https://github.com/Frivolous-Sites/openssl/wiki/Contributing-Guide) for more details.
 
 ## License
 
-All modifications to this repository are released under the same terms as OpenSSL, namely as described in the file [LICENSE](https://github.com/open-quantum-safe/openssl/blob/OQS-OpenSSL_1_1_1-stable/LICENSE).
+All modifications to this repository are released under the same terms as OpenSSL, namely as described in the file [LICENSE](https://github.com/Frivolous-Sites/openssl/blob/OQS-OpenSSL_1_1_1-stable/LICENSE).
 
 ## Team
 
@@ -335,6 +337,7 @@ Contributors to OQS-OpenSSL\_1\_1\_1 include:
 - Douglas Stebila (University of Waterloo)
 - Goutam Tamvada (University of Waterloo)
 - Michael Baentsch (baentsch.ch)
+- Frivolous-Sites
 
 ## Acknowledgments
 
