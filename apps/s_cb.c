@@ -266,16 +266,40 @@ static const char *get_sigtype(int nid)
         return "Dilithium5";
     case NID_p521_dilithium5:
         return "ECDSA p521 - Dilithium5";
+    case NID_mldsa44:
+        return "ML-DSA-44";
+    case NID_p256_mldsa44:
+        return "ECDSA p256 - ML-DSA-44";
+    case NID_rsa3072_mldsa44:
+        return "RSA3072 - ML-DSA-44";
+    case NID_mldsa65:
+        return "ML-DSA-65";
+    case NID_p384_mldsa65:
+        return "ECDSA p384 - ML-DSA-65";
+    case NID_mldsa87:
+        return "ML-DSA-87";
+    case NID_p521_mldsa87:
+        return "ECDSA p521 - ML-DSA-87";
     case NID_falcon512:
         return "Falcon-512";
     case NID_p256_falcon512:
         return "ECDSA p256 - Falcon-512";
     case NID_rsa3072_falcon512:
         return "RSA3072 - Falcon-512";
+    case NID_falconpadded512:
+        return "Falcon-padded-512";
+    case NID_p256_falconpadded512:
+        return "ECDSA p256 - Falcon-padded-512";
+    case NID_rsa3072_falconpadded512:
+        return "RSA3072 - Falcon-padded-512";
     case NID_falcon1024:
         return "Falcon-1024";
     case NID_p521_falcon1024:
         return "ECDSA p521 - Falcon-1024";
+    case NID_falconpadded1024:
+        return "Falcon-padded-1024";
+    case NID_p521_falconpadded1024:
+        return "ECDSA p521 - Falcon-padded-1024";
     case NID_sphincssha2128fsimple:
         return "SPHINCS+-SHA2-128f-simple";
     case NID_p256_sphincssha2128fsimple:
@@ -460,12 +484,15 @@ static const char* OQS_CURVE_ID_NAME_STR(int id) {
   case 0x023A: return "kyber512";
   case 0x023C: return "kyber768";
   case 0x023D: return "kyber1024";
+  case 0x0247: return "mlkem512";
+  case 0x0248: return "mlkem768";
+  case 0x0249: return "mlkem1024";
   case 0x0241: return "bikel1";
   case 0x0242: return "bikel3";
   case 0x0243: return "bikel5";
-  case 0x022C: return "hqc128";
-  case 0x022D: return "hqc192";
-  case 0x022E: return "hqc256";
+  case 0x0244: return "hqc128";
+  case 0x0245: return "hqc192";
+  case 0x0246: return "hqc256";
   ///// OQS_TEMPLATE_FRAGMENT_OQS_CURVE_ID_NAME_STR_END
   ///// OQS_TEMPLATE_FRAGMENT_OQS_CURVE_ID_NAME_STR_HYBRID_START
    case 0x2F00: return "p256_frodo640aes hybrid";
@@ -477,12 +504,15 @@ static const char* OQS_CURVE_ID_NAME_STR(int id) {
    case 0x2F3A: return "p256_kyber512 hybrid";
    case 0x2F3C: return "p384_kyber768 hybrid";
    case 0x2F3D: return "p521_kyber1024 hybrid";
+   case 0x2F47: return "p256_mlkem512 hybrid";
+   case 0x2F48: return "p384_mlkem768 hybrid";
+   case 0x2F49: return "p521_mlkem1024 hybrid";
    case 0x2F41: return "p256_bikel1 hybrid";
    case 0x2F42: return "p384_bikel3 hybrid";
    case 0x2F43: return "p521_bikel5 hybrid";
-   case 0x2F2C: return "p256_hqc128 hybrid";
-   case 0x2F2D: return "p384_hqc192 hybrid";
-   case 0x2F2E: return "p521_hqc256 hybrid";
+   case 0x2F44: return "p256_hqc128 hybrid";
+   case 0x2F45: return "p384_hqc192 hybrid";
+   case 0x2F46: return "p521_hqc256 hybrid";
   ///// OQS_TEMPLATE_FRAGMENT_OQS_CURVE_ID_NAME_STR_HYBRID_END
   default: return "";
   }

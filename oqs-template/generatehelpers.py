@@ -24,7 +24,7 @@ def get_kem_nistlevel(alg, docsdir):
     if alg['family'] == 'CRYSTALS-Kyber': datasheetname = 'kyber'
     elif alg['family'] == 'SIDH': datasheetname = 'sike'
     elif alg['family'] == 'NTRU-Prime': datasheetname = 'ntruprime'
-    else: datasheetname = alg['family'].lower()
+    else: datasheetname = alg['family'].lower().replace('-', '_')
     # load datasheet
     try:
         algymlfilename = os.path.join(docsdir, 'algorithms', 'kem', '{:s}.yml'.format(datasheetname))
@@ -44,17 +44,24 @@ def get_kem_nistlevel(alg, docsdir):
         return False
     # find the variant that matches
     for variant in algyml['parameter-sets']:
-        if matches(variant['name'], alg):
+        if matches(variant['name'], alg) or ('alias' in variant and matches(variant['alias'], alg)):
             return variant['claimed-nist-level']
+    # Information file for algorithms no longer supported by liboqs:
+    oldalgs = yaml.safe_load(file_get_contents(os.path.join("oqs-template", "oldalgs.yml"), encoding='utf-8'))
+    name = alg['name_group']
+    if name in oldalgs:
+        return oldalgs[name]['claimed-nist-level']
     return None
 
 def get_sig_nistlevel(family, alg, docsdir):
     # translate family names in generate.yml to directory names for liboqs algorithm datasheets
     if family['family'] == 'CRYSTALS-Dilithium': datasheetname = 'dilithium'
     elif family['family'] == 'SPHINCS-Haraka': datasheetname = 'sphincs'
+    elif family['family'] == 'SPHINCS-SHA256': datasheetname = 'sphincs'
+    elif family['family'] == 'SPHINCS-SHAKE256': datasheetname = 'sphincs'
     elif family['family'] == 'SPHINCS-SHA2': datasheetname = 'sphincs'
     elif family['family'] == 'SPHINCS-SHAKE': datasheetname = 'sphincs'
-    else: datasheetname = family['family'].lower()
+    else: datasheetname = family['family'].lower().replace('-', '_')
     # load datasheet
     algymlfilename = os.path.join(docsdir, 'algorithms', 'sig', '{:s}.yml'.format(datasheetname))
     algyml = yaml.safe_load(file_get_contents(algymlfilename, encoding='utf-8'))
@@ -66,8 +73,13 @@ def get_sig_nistlevel(family, alg, docsdir):
         return False
     # find the variant that matches
     for variant in algyml['parameter-sets']:
-        if matches(variant['name'], alg):
+        if matches(variant['name'], alg) or ('alias' in variant and matches(variant['alias'], alg)):
             return variant['claimed-nist-level']
+    # Information file for algorithms no longer supported by liboqs:
+    oldalgs = yaml.safe_load(file_get_contents(os.path.join("oqs-template", "oldalgs.yml"), encoding='utf-8'))
+    name = alg['name']
+    if name in oldalgs:
+        return oldalgs[name]['claimed-nist-level']
     return None
 
 def nist_to_bits(nistlevel):
@@ -86,18 +98,14 @@ def complete_config(config, oqsdocsdir = None):
         print("Must include LIBOQS_DOCS_DIR in environment")
         exit(1)
       oqsdocsdir = os.environ["LIBOQS_DOCS_DIR"]
-   nkc = []
    for kem in config['kems']:
       if not "bit_security" in kem.keys():
          bits_level = nist_to_bits(get_kem_nistlevel(kem, oqsdocsdir))
          if bits_level == None: 
              print("Cannot find security level for {:s} {:s}".format(kem['family'], kem['name_group']))
-         else:
-             kem['bit_security'] = bits_level
-             nkc.append(kem)
-   config['kems']=nkc
+             exit(1)
+         kem['bit_security'] = bits_level
    for famsig in config['sigs']:
-      nsv = []
       for sig in famsig['variants']:
          if not "security" in sig.keys():
             bits_level = nist_to_bits(get_sig_nistlevel(famsig, sig, oqsdocsdir))
@@ -106,10 +114,7 @@ def complete_config(config, oqsdocsdir = None):
                     bits_level=128
                 else:
                     print("Cannot find security level for {:s} {:s}".format(famsig['family'], sig['name']))
-                    bits_level = -1
-            else:
-                sig['security'] = bits_level
-                nsv.append(sig)
-      famsig['variants']=nsv
+                    exit(1)
+            sig['security'] = bits_level
    return config
 

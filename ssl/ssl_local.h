@@ -217,38 +217,62 @@
 #define SSL_aDILITHIUM5 0x00002000U
 /* ECDSA p521 - Dilithium5 auth */
 #define SSL_aP521_DILITHIUM5 0x00004000U
+/* ML-DSA-44 auth */
+#define SSL_aMLDSA44 0x00008000U
+/* ECDSA p256 - ML-DSA-44 auth */
+#define SSL_aP256_MLDSA44 0x00010000U
+/* RSA3072 - ML-DSA-44 auth */
+#define SSL_aRSA3072_MLDSA44 0x00020000U
+/* ML-DSA-65 auth */
+#define SSL_aMLDSA65 0x00040000U
+/* ECDSA p384 - ML-DSA-65 auth */
+#define SSL_aP384_MLDSA65 0x00080000U
+/* ML-DSA-87 auth */
+#define SSL_aMLDSA87 0x00100000U
+/* ECDSA p521 - ML-DSA-87 auth */
+#define SSL_aP521_MLDSA87 0x00200000U
 /* Falcon-512 auth */
-#define SSL_aFALCON512 0x00008000U
+#define SSL_aFALCON512 0x00400000U
 /* ECDSA p256 - Falcon-512 auth */
-#define SSL_aP256_FALCON512 0x00010000U
+#define SSL_aP256_FALCON512 0x00800000U
 /* RSA3072 - Falcon-512 auth */
-#define SSL_aRSA3072_FALCON512 0x00020000U
+#define SSL_aRSA3072_FALCON512 0x01000000U
+/* Falcon-padded-512 auth */
+#define SSL_aFALCONPADDED512 0x02000000U
+/* ECDSA p256 - Falcon-padded-512 auth */
+#define SSL_aP256_FALCONPADDED512 0x04000000U
+/* RSA3072 - Falcon-padded-512 auth */
+#define SSL_aRSA3072_FALCONPADDED512 0x08000000U
 /* Falcon-1024 auth */
-#define SSL_aFALCON1024 0x00040000U
+#define SSL_aFALCON1024 0x10000000U
 /* ECDSA p521 - Falcon-1024 auth */
-#define SSL_aP521_FALCON1024 0x00080000U
+#define SSL_aP521_FALCON1024 0x20000000U
+/* Falcon-padded-1024 auth */
+#define SSL_aFALCONPADDED1024 0x40000000U
+/* ECDSA p521 - Falcon-padded-1024 auth */
+#define SSL_aP521_FALCONPADDED1024 0x80000000U
 /* SPHINCS+-SHA2-128f-simple auth */
-#define SSL_aSPHINCSSHA2128FSIMPLE 0x00100000U
+#define SSL_aSPHINCSSHA2128FSIMPLE 0x100000000U
 /* ECDSA p256 - SPHINCS+-SHA2-128f-simple auth */
-#define SSL_aP256_SPHINCSSHA2128FSIMPLE 0x00200000U
+#define SSL_aP256_SPHINCSSHA2128FSIMPLE 0x200000000U
 /* RSA3072 - SPHINCS+-SHA2-128f-simple auth */
-#define SSL_aRSA3072_SPHINCSSHA2128FSIMPLE 0x00400000U
+#define SSL_aRSA3072_SPHINCSSHA2128FSIMPLE 0x400000000U
 /* SPHINCS+-SHA2-128s-simple auth */
-#define SSL_aSPHINCSSHA2128SSIMPLE 0x00800000U
+#define SSL_aSPHINCSSHA2128SSIMPLE 0x800000000U
 /* ECDSA p256 - SPHINCS+-SHA2-128s-simple auth */
-#define SSL_aP256_SPHINCSSHA2128SSIMPLE 0x01000000U
+#define SSL_aP256_SPHINCSSHA2128SSIMPLE 0x1000000000U
 /* RSA3072 - SPHINCS+-SHA2-128s-simple auth */
-#define SSL_aRSA3072_SPHINCSSHA2128SSIMPLE 0x02000000U
+#define SSL_aRSA3072_SPHINCSSHA2128SSIMPLE 0x2000000000U
 /* SPHINCS+-SHA2-192f-simple auth */
-#define SSL_aSPHINCSSHA2192FSIMPLE 0x04000000U
+#define SSL_aSPHINCSSHA2192FSIMPLE 0x4000000000U
 /* ECDSA p384 - SPHINCS+-SHA2-192f-simple auth */
-#define SSL_aP384_SPHINCSSHA2192FSIMPLE 0x08000000U
+#define SSL_aP384_SPHINCSSHA2192FSIMPLE 0x8000000000U
 /* SPHINCS+-SHAKE-128f-simple auth */
-#define SSL_aSPHINCSSHAKE128FSIMPLE 0x10000000U
+#define SSL_aSPHINCSSHAKE128FSIMPLE 0x10000000000U
 /* ECDSA p256 - SPHINCS+-SHAKE-128f-simple auth */
-#define SSL_aP256_SPHINCSSHAKE128FSIMPLE 0x20000000U
+#define SSL_aP256_SPHINCSSHAKE128FSIMPLE 0x20000000000U
 /* RSA3072 - SPHINCS+-SHAKE-128f-simple auth */
-#define SSL_aRSA3072_SPHINCSSHAKE128FSIMPLE 0x40000000U
+#define SSL_aRSA3072_SPHINCSSHAKE128FSIMPLE 0x40000000000U
 ///// OQS_TEMPLATE_FRAGMENT_DEFINE_SIG_MASKS_END
 /* Any appropriate signature auth (for TLS 1.3 ciphersuites) */
 # define SSL_aANY                0x00000000U
@@ -440,24 +464,36 @@
 #define SSL_PKEY_P384_DILITHIUM3 13
 #define SSL_PKEY_DILITHIUM5 14
 #define SSL_PKEY_P521_DILITHIUM5 15
-#define SSL_PKEY_FALCON512 16
-#define SSL_PKEY_P256_FALCON512 17
-#define SSL_PKEY_RSA3072_FALCON512 18
-#define SSL_PKEY_FALCON1024 19
-#define SSL_PKEY_P521_FALCON1024 20
-#define SSL_PKEY_SPHINCSSHA2128FSIMPLE 21
-#define SSL_PKEY_P256_SPHINCSSHA2128FSIMPLE 22
-#define SSL_PKEY_RSA3072_SPHINCSSHA2128FSIMPLE 23
-#define SSL_PKEY_SPHINCSSHA2128SSIMPLE 24
-#define SSL_PKEY_P256_SPHINCSSHA2128SSIMPLE 25
-#define SSL_PKEY_RSA3072_SPHINCSSHA2128SSIMPLE 26
-#define SSL_PKEY_SPHINCSSHA2192FSIMPLE 27
-#define SSL_PKEY_P384_SPHINCSSHA2192FSIMPLE 28
-#define SSL_PKEY_SPHINCSSHAKE128FSIMPLE 29
-#define SSL_PKEY_P256_SPHINCSSHAKE128FSIMPLE 30
-#define SSL_PKEY_RSA3072_SPHINCSSHAKE128FSIMPLE 31
+#define SSL_PKEY_MLDSA44 16
+#define SSL_PKEY_P256_MLDSA44 17
+#define SSL_PKEY_RSA3072_MLDSA44 18
+#define SSL_PKEY_MLDSA65 19
+#define SSL_PKEY_P384_MLDSA65 20
+#define SSL_PKEY_MLDSA87 21
+#define SSL_PKEY_P521_MLDSA87 22
+#define SSL_PKEY_FALCON512 23
+#define SSL_PKEY_P256_FALCON512 24
+#define SSL_PKEY_RSA3072_FALCON512 25
+#define SSL_PKEY_FALCONPADDED512 26
+#define SSL_PKEY_P256_FALCONPADDED512 27
+#define SSL_PKEY_RSA3072_FALCONPADDED512 28
+#define SSL_PKEY_FALCON1024 29
+#define SSL_PKEY_P521_FALCON1024 30
+#define SSL_PKEY_FALCONPADDED1024 31
+#define SSL_PKEY_P521_FALCONPADDED1024 32
+#define SSL_PKEY_SPHINCSSHA2128FSIMPLE 33
+#define SSL_PKEY_P256_SPHINCSSHA2128FSIMPLE 34
+#define SSL_PKEY_RSA3072_SPHINCSSHA2128FSIMPLE 35
+#define SSL_PKEY_SPHINCSSHA2128SSIMPLE 36
+#define SSL_PKEY_P256_SPHINCSSHA2128SSIMPLE 37
+#define SSL_PKEY_RSA3072_SPHINCSSHA2128SSIMPLE 38
+#define SSL_PKEY_SPHINCSSHA2192FSIMPLE 39
+#define SSL_PKEY_P384_SPHINCSSHA2192FSIMPLE 40
+#define SSL_PKEY_SPHINCSSHAKE128FSIMPLE 41
+#define SSL_PKEY_P256_SPHINCSSHAKE128FSIMPLE 42
+#define SSL_PKEY_RSA3072_SPHINCSSHAKE128FSIMPLE 43
 
-#define SSL_PKEY_NUM 32
+#define SSL_PKEY_NUM 44
 ///// OQS_TEMPLATE_FRAGMENT_DEFINE_SSL_PKEYS_END
 
 /*-
@@ -486,14 +522,17 @@
   (nid == NID_kyber512 ? 0x023A : \
   (nid == NID_kyber768 ? 0x023C : \
   (nid == NID_kyber1024 ? 0x023D : \
+  (nid == NID_mlkem512 ? 0x0247 : \
+  (nid == NID_mlkem768 ? 0x0248 : \
+  (nid == NID_mlkem1024 ? 0x0249 : \
   (nid == NID_bikel1 ? 0x0241 : \
   (nid == NID_bikel3 ? 0x0242 : \
   (nid == NID_bikel5 ? 0x0243 : \
-  (nid == NID_hqc128 ? 0x022C : \
-  (nid == NID_hqc192 ? 0x022D : \
-  (nid == NID_hqc256 ? 0x022E : \
+  (nid == NID_hqc128 ? 0x0244 : \
+  (nid == NID_hqc192 ? 0x0245 : \
+  (nid == NID_hqc256 ? 0x0246 : \
   0 \
-  )))))))))))))))
+  ))))))))))))))))))
 ///// OQS_TEMPLATE_FRAGMENT_OQS_KEM_CURVEID_END
 
 ///// OQS_TEMPLATE_FRAGMENT_OQS_KEM_HYBRID_CURVEID_START
@@ -507,14 +546,17 @@
     (nid == NID_p256_kyber512 ? 0x2F3A : \
     (nid == NID_p384_kyber768 ? 0x2F3C : \
     (nid == NID_p521_kyber1024 ? 0x2F3D : \
+    (nid == NID_p256_mlkem512 ? 0x2F47 : \
+    (nid == NID_p384_mlkem768 ? 0x2F48 : \
+    (nid == NID_p521_mlkem1024 ? 0x2F49 : \
     (nid == NID_p256_bikel1 ? 0x2F41 : \
     (nid == NID_p384_bikel3 ? 0x2F42 : \
     (nid == NID_p521_bikel5 ? 0x2F43 : \
-    (nid == NID_p256_hqc128 ? 0x2F2C : \
-    (nid == NID_p384_hqc192 ? 0x2F2D : \
-    (nid == NID_p521_hqc256 ? 0x2F2E : \
+    (nid == NID_p256_hqc128 ? 0x2F44 : \
+    (nid == NID_p384_hqc192 ? 0x2F45 : \
+    (nid == NID_p521_hqc256 ? 0x2F46 : \
   0 \
-  )))))))))))))))
+  ))))))))))))))))))
 ///// OQS_TEMPLATE_FRAGMENT_OQS_KEM_HYBRID_CURVEID_END
 
   /* Returns the non-hybrid OQS KEM NID for a PQ or hybrid curve ID */
@@ -529,14 +571,17 @@
   (curveID == 0x023A || curveID == 0x2F3A ? NID_kyber512 : \
   (curveID == 0x023C || curveID == 0x2F3C ? NID_kyber768 : \
   (curveID == 0x023D || curveID == 0x2F3D ? NID_kyber1024 : \
+  (curveID == 0x0247 || curveID == 0x2F47 ? NID_mlkem512 : \
+  (curveID == 0x0248 || curveID == 0x2F48 ? NID_mlkem768 : \
+  (curveID == 0x0249 || curveID == 0x2F49 ? NID_mlkem1024 : \
   (curveID == 0x0241 || curveID == 0x2F41 ? NID_bikel1 : \
   (curveID == 0x0242 || curveID == 0x2F42 ? NID_bikel3 : \
   (curveID == 0x0243 || curveID == 0x2F43 ? NID_bikel5 : \
-  (curveID == 0x022C || curveID == 0x2F2C ? NID_hqc128 : \
-  (curveID == 0x022D || curveID == 0x2F2D ? NID_hqc192 : \
-  (curveID == 0x022E || curveID == 0x2F2E ? NID_hqc256 : \
+  (curveID == 0x0244 || curveID == 0x2F44 ? NID_hqc128 : \
+  (curveID == 0x0245 || curveID == 0x2F45 ? NID_hqc192 : \
+  (curveID == 0x0246 || curveID == 0x2F46 ? NID_hqc256 : \
   0 \
-  )))))))))))))))
+  ))))))))))))))))))
 ///// OQS_TEMPLATE_FRAGMENT_OQS_KEM_NID_END
 
   /* Returns the hybrid OQS KEM NID for a hybrid curve ID */
@@ -551,14 +596,17 @@
     (curveID == 0x2F3A ? NID_p256_kyber512 : \
     (curveID == 0x2F3C ? NID_p384_kyber768 : \
     (curveID == 0x2F3D ? NID_p521_kyber1024 : \
+    (curveID == 0x2F47 ? NID_p256_mlkem512 : \
+    (curveID == 0x2F48 ? NID_p384_mlkem768 : \
+    (curveID == 0x2F49 ? NID_p521_mlkem1024 : \
     (curveID == 0x2F41 ? NID_p256_bikel1 : \
     (curveID == 0x2F42 ? NID_p384_bikel3 : \
     (curveID == 0x2F43 ? NID_p521_bikel5 : \
-    (curveID == 0x2F2C ? NID_p256_hqc128 : \
-    (curveID == 0x2F2D ? NID_p384_hqc192 : \
-    (curveID == 0x2F2E ? NID_p521_hqc256 : \
+    (curveID == 0x2F44 ? NID_p256_hqc128 : \
+    (curveID == 0x2F45 ? NID_p384_hqc192 : \
+    (curveID == 0x2F46 ? NID_p521_hqc256 : \
   0 \
-  )))))))))))))))
+  ))))))))))))))))))
 ///// OQS_TEMPLATE_FRAGMENT_OQS_HYBRID_KEM_NID_END
 
 /* Returns true if the curve ID is for an OQS KEM */
@@ -581,6 +629,9 @@
   (nid == NID_kyber512 ? OQS_KEM_alg_kyber_512 : \
   (nid == NID_kyber768 ? OQS_KEM_alg_kyber_768 : \
   (nid == NID_kyber1024 ? OQS_KEM_alg_kyber_1024 : \
+  (nid == NID_mlkem512 ? OQS_KEM_alg_ml_kem_512 : \
+  (nid == NID_mlkem768 ? OQS_KEM_alg_ml_kem_768 : \
+  (nid == NID_mlkem1024 ? OQS_KEM_alg_ml_kem_1024 : \
   (nid == NID_bikel1 ? OQS_KEM_alg_bike_l1 : \
   (nid == NID_bikel3 ? OQS_KEM_alg_bike_l3 : \
   (nid == NID_bikel5 ? OQS_KEM_alg_bike_l5 : \
@@ -588,7 +639,7 @@
   (nid == NID_hqc192 ? OQS_KEM_alg_hqc_192 : \
   (nid == NID_hqc256 ? OQS_KEM_alg_hqc_256 : \
   0 \
-  )))))))))))))))
+  ))))))))))))))))))
 ///// OQS_TEMPLATE_FRAGMENT_OQS_ALG_NAME_END
 
 /* Returns the classic curve ID for a given hybrid curve */
@@ -604,14 +655,17 @@
   (cid == 0x2F3A ?23: \
   (cid == 0x2F3C ?24: \
   (cid == 0x2F3D ?25: \
+  (cid == 0x2F47 ?23: \
+  (cid == 0x2F48 ?24: \
+  (cid == 0x2F49 ?25: \
   (cid == 0x2F41 ?23: \
   (cid == 0x2F42 ?24: \
   (cid == 0x2F43 ?25: \
-  (cid == 0x2F2C ?23: \
-  (cid == 0x2F2D ?24: \
-  (cid == 0x2F2E ?25: \
+  (cid == 0x2F44 ?23: \
+  (cid == 0x2F45 ?24: \
+  (cid == 0x2F46 ?25: \
   23 \
-  ))))))))))))))))
+  )))))))))))))))))))
 ///// OQS_TEMPLATE_FRAGMENT_OQS_MAP_HYBRID_END
 
 /* Returns the classical nid for an hybrid alg */
@@ -2283,11 +2337,23 @@ typedef enum downgrade_en {
 #define TLSEXT_SIGALG_p384_dilithium3 0xfea4
 #define TLSEXT_SIGALG_dilithium5 0xfea5
 #define TLSEXT_SIGALG_p521_dilithium5 0xfea6
-#define TLSEXT_SIGALG_falcon512 0xfeae
-#define TLSEXT_SIGALG_p256_falcon512 0xfeaf
-#define TLSEXT_SIGALG_rsa3072_falcon512 0xfeb0
-#define TLSEXT_SIGALG_falcon1024 0xfeb1
-#define TLSEXT_SIGALG_p521_falcon1024 0xfeb2
+#define TLSEXT_SIGALG_mldsa44 0xfed0
+#define TLSEXT_SIGALG_p256_mldsa44 0xfed3
+#define TLSEXT_SIGALG_rsa3072_mldsa44 0xfed4
+#define TLSEXT_SIGALG_mldsa65 0xfed1
+#define TLSEXT_SIGALG_p384_mldsa65 0xfed5
+#define TLSEXT_SIGALG_mldsa87 0xfed2
+#define TLSEXT_SIGALG_p521_mldsa87 0xfed6
+#define TLSEXT_SIGALG_falcon512 0xfed7
+#define TLSEXT_SIGALG_p256_falcon512 0xfed8
+#define TLSEXT_SIGALG_rsa3072_falcon512 0xfed9
+#define TLSEXT_SIGALG_falconpadded512 0xfedc
+#define TLSEXT_SIGALG_p256_falconpadded512 0xfedd
+#define TLSEXT_SIGALG_rsa3072_falconpadded512 0xfede
+#define TLSEXT_SIGALG_falcon1024 0xfeda
+#define TLSEXT_SIGALG_p521_falcon1024 0xfedb
+#define TLSEXT_SIGALG_falconpadded1024 0xfedf
+#define TLSEXT_SIGALG_p521_falconpadded1024 0xfee0
 #define TLSEXT_SIGALG_sphincssha2128fsimple 0xfeb3
 #define TLSEXT_SIGALG_p256_sphincssha2128fsimple 0xfeb4
 #define TLSEXT_SIGALG_rsa3072_sphincssha2128fsimple 0xfeb5

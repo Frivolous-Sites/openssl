@@ -196,12 +196,15 @@ static const TLS_GROUP_INFO oqs_nid_list[] = {
     {NID_kyber512, 128, TLS_CURVE_CUSTOM}, /* kyber512 (0x023A) */
     {NID_kyber768, 192, TLS_CURVE_CUSTOM}, /* kyber768 (0x023C) */
     {NID_kyber1024, 256, TLS_CURVE_CUSTOM}, /* kyber1024 (0x023D) */
+    {NID_mlkem512, 128, TLS_CURVE_CUSTOM}, /* mlkem512 (0x0247) */
+    {NID_mlkem768, 192, TLS_CURVE_CUSTOM}, /* mlkem768 (0x0248) */
+    {NID_mlkem1024, 256, TLS_CURVE_CUSTOM}, /* mlkem1024 (0x0249) */
     {NID_bikel1, 128, TLS_CURVE_CUSTOM}, /* bikel1 (0x0241) */
     {NID_bikel3, 192, TLS_CURVE_CUSTOM}, /* bikel3 (0x0242) */
     {NID_bikel5, 256, TLS_CURVE_CUSTOM}, /* bikel5 (0x0243) */
-    {NID_hqc128, 128, TLS_CURVE_CUSTOM}, /* hqc128 (0x022C) */
-    {NID_hqc192, 192, TLS_CURVE_CUSTOM}, /* hqc192 (0x022D) */
-    {NID_hqc256, 256, TLS_CURVE_CUSTOM}, /* hqc256 (0x022E) */
+    {NID_hqc128, 128, TLS_CURVE_CUSTOM}, /* hqc128 (0x0244) */
+    {NID_hqc192, 192, TLS_CURVE_CUSTOM}, /* hqc192 (0x0245) */
+    {NID_hqc256, 256, TLS_CURVE_CUSTOM}, /* hqc256 (0x0246) */
 ///// OQS_TEMPLATE_FRAGMENT_OQS_NID_LIST_END
 };
     /* Hybrid OQS groups. Security level is classical. */
@@ -216,12 +219,15 @@ static const TLS_GROUP_INFO oqs_hybrid_nid_list[] = {
  {NID_p256_kyber512, 128, TLS_CURVE_CUSTOM}, /* p256/384/521 + kyber512 hybrid (0x023A) */
  {NID_p384_kyber768, 192, TLS_CURVE_CUSTOM}, /* p256/384/521 + kyber768 hybrid (0x023C) */
  {NID_p521_kyber1024, 256, TLS_CURVE_CUSTOM}, /* p256/384/521 + kyber1024 hybrid (0x023D) */
+ {NID_p256_mlkem512, 128, TLS_CURVE_CUSTOM}, /* p256/384/521 + mlkem512 hybrid (0x0247) */
+ {NID_p384_mlkem768, 192, TLS_CURVE_CUSTOM}, /* p256/384/521 + mlkem768 hybrid (0x0248) */
+ {NID_p521_mlkem1024, 256, TLS_CURVE_CUSTOM}, /* p256/384/521 + mlkem1024 hybrid (0x0249) */
  {NID_p256_bikel1, 128, TLS_CURVE_CUSTOM}, /* p256/384/521 + bikel1 hybrid (0x0241) */
  {NID_p384_bikel3, 192, TLS_CURVE_CUSTOM}, /* p256/384/521 + bikel3 hybrid (0x0242) */
  {NID_p521_bikel5, 256, TLS_CURVE_CUSTOM}, /* p256/384/521 + bikel5 hybrid (0x0243) */
- {NID_p256_hqc128, 128, TLS_CURVE_CUSTOM}, /* p256/384/521 + hqc128 hybrid (0x022C) */
- {NID_p384_hqc192, 192, TLS_CURVE_CUSTOM}, /* p256/384/521 + hqc192 hybrid (0x022D) */
- {NID_p521_hqc256, 256, TLS_CURVE_CUSTOM}, /* p256/384/521 + hqc256 hybrid (0x022E) */
+ {NID_p256_hqc128, 128, TLS_CURVE_CUSTOM}, /* p256/384/521 + hqc128 hybrid (0x0244) */
+ {NID_p384_hqc192, 192, TLS_CURVE_CUSTOM}, /* p256/384/521 + hqc192 hybrid (0x0245) */
+ {NID_p521_hqc256, 256, TLS_CURVE_CUSTOM}, /* p256/384/521 + hqc256 hybrid (0x0246) */
 ///// OQS_TEMPLATE_FRAGMENT_OQS_NID_LIST_HYBRID_END
 };
 
@@ -242,8 +248,9 @@ static const uint16_t eccurves_default[] = {
     0x2F00, /* OQS frodo640aes hybrid */
     0x2F01, /* OQS frodo640shake hybrid */
     0x2F3A, /* OQS kyber512 hybrid */
+    0x2F47, /* OQS mlkem512 hybrid */
     0x2F41, /* OQS bikel1 hybrid */
-    0x2F2C, /* OQS hqc128 hybrid */
+    0x2F44, /* OQS hqc128 hybrid */
 ///// OQS_TEMPLATE_FRAGMENT_ECCURVES_DEFAULT_HYBRID_END
 };
 
@@ -280,18 +287,24 @@ static const uint16_t oqs_all_tls13_server_groups[] = {
     0x2F3C, /* OQS kyber768 hybrid */
     0x023D, /* kyber1024 */
     0x2F3D, /* OQS kyber1024 hybrid */
+    0x0247, /* mlkem512 */
+    0x2F47, /* OQS mlkem512 hybrid */
+    0x0248, /* mlkem768 */
+    0x2F48, /* OQS mlkem768 hybrid */
+    0x0249, /* mlkem1024 */
+    0x2F49, /* OQS mlkem1024 hybrid */
     0x0241, /* bikel1 */
     0x2F41, /* OQS bikel1 hybrid */
     0x0242, /* bikel3 */
     0x2F42, /* OQS bikel3 hybrid */
     0x0243, /* bikel5 */
     0x2F43, /* OQS bikel5 hybrid */
-    0x022C, /* hqc128 */
-    0x2F2C, /* OQS hqc128 hybrid */
-    0x022D, /* hqc192 */
-    0x2F2D, /* OQS hqc192 hybrid */
-    0x022E, /* hqc256 */
-    0x2F2E, /* OQS hqc256 hybrid */
+    0x0244, /* hqc128 */
+    0x2F44, /* OQS hqc128 hybrid */
+    0x0245, /* hqc192 */
+    0x2F45, /* OQS hqc192 hybrid */
+    0x0246, /* hqc256 */
+    0x2F46, /* OQS hqc256 hybrid */
 ///// OQS_TEMPLATE_FRAGMENT_ALL_OQS_CURVEIDS_END
 };
 
@@ -846,11 +859,23 @@ static const uint16_t tls12_sigalgs[] = {
     TLSEXT_SIGALG_p384_dilithium3,
     TLSEXT_SIGALG_dilithium5,
     TLSEXT_SIGALG_p521_dilithium5,
+    TLSEXT_SIGALG_mldsa44,
+    TLSEXT_SIGALG_p256_mldsa44,
+    TLSEXT_SIGALG_rsa3072_mldsa44,
+    TLSEXT_SIGALG_mldsa65,
+    TLSEXT_SIGALG_p384_mldsa65,
+    TLSEXT_SIGALG_mldsa87,
+    TLSEXT_SIGALG_p521_mldsa87,
     TLSEXT_SIGALG_falcon512,
     TLSEXT_SIGALG_p256_falcon512,
     TLSEXT_SIGALG_rsa3072_falcon512,
+    TLSEXT_SIGALG_falconpadded512,
+    TLSEXT_SIGALG_p256_falconpadded512,
+    TLSEXT_SIGALG_rsa3072_falconpadded512,
     TLSEXT_SIGALG_falcon1024,
     TLSEXT_SIGALG_p521_falcon1024,
+    TLSEXT_SIGALG_falconpadded1024,
+    TLSEXT_SIGALG_p521_falconpadded1024,
     TLSEXT_SIGALG_sphincssha2128fsimple,
     TLSEXT_SIGALG_p256_sphincssha2128fsimple,
     TLSEXT_SIGALG_rsa3072_sphincssha2128fsimple,
@@ -1013,6 +1038,27 @@ static const SIGALG_LOOKUP sigalg_lookup_tbl[] = {
     {"p521_dilithium5", TLSEXT_SIGALG_p521_dilithium5,
      NID_undef, -1, EVP_PKEY_P521_DILITHIUM5, SSL_PKEY_P521_DILITHIUM5,
      NID_undef, NID_undef},
+    {"mldsa44", TLSEXT_SIGALG_mldsa44,
+     NID_undef, -1, EVP_PKEY_MLDSA44, SSL_PKEY_MLDSA44,
+     NID_undef, NID_undef},
+    {"p256_mldsa44", TLSEXT_SIGALG_p256_mldsa44,
+     NID_undef, -1, EVP_PKEY_P256_MLDSA44, SSL_PKEY_P256_MLDSA44,
+     NID_undef, NID_undef},
+    {"rsa3072_mldsa44", TLSEXT_SIGALG_rsa3072_mldsa44,
+     NID_undef, -1, EVP_PKEY_RSA3072_MLDSA44, SSL_PKEY_RSA3072_MLDSA44,
+     NID_undef, NID_undef},
+    {"mldsa65", TLSEXT_SIGALG_mldsa65,
+     NID_undef, -1, EVP_PKEY_MLDSA65, SSL_PKEY_MLDSA65,
+     NID_undef, NID_undef},
+    {"p384_mldsa65", TLSEXT_SIGALG_p384_mldsa65,
+     NID_undef, -1, EVP_PKEY_P384_MLDSA65, SSL_PKEY_P384_MLDSA65,
+     NID_undef, NID_undef},
+    {"mldsa87", TLSEXT_SIGALG_mldsa87,
+     NID_undef, -1, EVP_PKEY_MLDSA87, SSL_PKEY_MLDSA87,
+     NID_undef, NID_undef},
+    {"p521_mldsa87", TLSEXT_SIGALG_p521_mldsa87,
+     NID_undef, -1, EVP_PKEY_P521_MLDSA87, SSL_PKEY_P521_MLDSA87,
+     NID_undef, NID_undef},
     {"falcon512", TLSEXT_SIGALG_falcon512,
      NID_undef, -1, EVP_PKEY_FALCON512, SSL_PKEY_FALCON512,
      NID_undef, NID_undef},
@@ -1022,11 +1068,26 @@ static const SIGALG_LOOKUP sigalg_lookup_tbl[] = {
     {"rsa3072_falcon512", TLSEXT_SIGALG_rsa3072_falcon512,
      NID_undef, -1, EVP_PKEY_RSA3072_FALCON512, SSL_PKEY_RSA3072_FALCON512,
      NID_undef, NID_undef},
+    {"falconpadded512", TLSEXT_SIGALG_falconpadded512,
+     NID_undef, -1, EVP_PKEY_FALCONPADDED512, SSL_PKEY_FALCONPADDED512,
+     NID_undef, NID_undef},
+    {"p256_falconpadded512", TLSEXT_SIGALG_p256_falconpadded512,
+     NID_undef, -1, EVP_PKEY_P256_FALCONPADDED512, SSL_PKEY_P256_FALCONPADDED512,
+     NID_undef, NID_undef},
+    {"rsa3072_falconpadded512", TLSEXT_SIGALG_rsa3072_falconpadded512,
+     NID_undef, -1, EVP_PKEY_RSA3072_FALCONPADDED512, SSL_PKEY_RSA3072_FALCONPADDED512,
+     NID_undef, NID_undef},
     {"falcon1024", TLSEXT_SIGALG_falcon1024,
      NID_undef, -1, EVP_PKEY_FALCON1024, SSL_PKEY_FALCON1024,
      NID_undef, NID_undef},
     {"p521_falcon1024", TLSEXT_SIGALG_p521_falcon1024,
      NID_undef, -1, EVP_PKEY_P521_FALCON1024, SSL_PKEY_P521_FALCON1024,
+     NID_undef, NID_undef},
+    {"falconpadded1024", TLSEXT_SIGALG_falconpadded1024,
+     NID_undef, -1, EVP_PKEY_FALCONPADDED1024, SSL_PKEY_FALCONPADDED1024,
+     NID_undef, NID_undef},
+    {"p521_falconpadded1024", TLSEXT_SIGALG_p521_falconpadded1024,
+     NID_undef, -1, EVP_PKEY_P521_FALCONPADDED1024, SSL_PKEY_P521_FALCONPADDED1024,
      NID_undef, NID_undef},
     {"sphincssha2128fsimple", TLSEXT_SIGALG_sphincssha2128fsimple,
      NID_undef, -1, EVP_PKEY_SPHINCSSHA2128FSIMPLE, SSL_PKEY_SPHINCSSHA2128FSIMPLE,
@@ -1318,15 +1379,39 @@ static int sigalg_security_bits(const SIGALG_LOOKUP *lu)
             secbits = 256;
         else if(lu->sigalg == TLSEXT_SIGALG_p521_dilithium5)
             secbits = 256;
+        else if(lu->sigalg == TLSEXT_SIGALG_mldsa44)
+            secbits = 128;
+        else if(lu->sigalg == TLSEXT_SIGALG_p256_mldsa44)
+            secbits = 128;
+        else if(lu->sigalg == TLSEXT_SIGALG_rsa3072_mldsa44)
+            secbits = 128;
+        else if(lu->sigalg == TLSEXT_SIGALG_mldsa65)
+            secbits = 192;
+        else if(lu->sigalg == TLSEXT_SIGALG_p384_mldsa65)
+            secbits = 192;
+        else if(lu->sigalg == TLSEXT_SIGALG_mldsa87)
+            secbits = 256;
+        else if(lu->sigalg == TLSEXT_SIGALG_p521_mldsa87)
+            secbits = 256;
         else if(lu->sigalg == TLSEXT_SIGALG_falcon512)
             secbits = 128;
         else if(lu->sigalg == TLSEXT_SIGALG_p256_falcon512)
             secbits = 128;
         else if(lu->sigalg == TLSEXT_SIGALG_rsa3072_falcon512)
             secbits = 128;
+        else if(lu->sigalg == TLSEXT_SIGALG_falconpadded512)
+            secbits = 128;
+        else if(lu->sigalg == TLSEXT_SIGALG_p256_falconpadded512)
+            secbits = 128;
+        else if(lu->sigalg == TLSEXT_SIGALG_rsa3072_falconpadded512)
+            secbits = 128;
         else if(lu->sigalg == TLSEXT_SIGALG_falcon1024)
             secbits = 256;
         else if(lu->sigalg == TLSEXT_SIGALG_p521_falcon1024)
+            secbits = 256;
+        else if(lu->sigalg == TLSEXT_SIGALG_falconpadded1024)
+            secbits = 256;
+        else if(lu->sigalg == TLSEXT_SIGALG_p521_falconpadded1024)
             secbits = 256;
         else if(lu->sigalg == TLSEXT_SIGALG_sphincssha2128fsimple)
             secbits = 128;
@@ -2773,11 +2858,23 @@ void tls1_set_cert_validity(SSL *s)
     tls1_check_chain(s, NULL, NULL, NULL, SSL_PKEY_P384_DILITHIUM3);
     tls1_check_chain(s, NULL, NULL, NULL, SSL_PKEY_DILITHIUM5);
     tls1_check_chain(s, NULL, NULL, NULL, SSL_PKEY_P521_DILITHIUM5);
+    tls1_check_chain(s, NULL, NULL, NULL, SSL_PKEY_MLDSA44);
+    tls1_check_chain(s, NULL, NULL, NULL, SSL_PKEY_P256_MLDSA44);
+    tls1_check_chain(s, NULL, NULL, NULL, SSL_PKEY_RSA3072_MLDSA44);
+    tls1_check_chain(s, NULL, NULL, NULL, SSL_PKEY_MLDSA65);
+    tls1_check_chain(s, NULL, NULL, NULL, SSL_PKEY_P384_MLDSA65);
+    tls1_check_chain(s, NULL, NULL, NULL, SSL_PKEY_MLDSA87);
+    tls1_check_chain(s, NULL, NULL, NULL, SSL_PKEY_P521_MLDSA87);
     tls1_check_chain(s, NULL, NULL, NULL, SSL_PKEY_FALCON512);
     tls1_check_chain(s, NULL, NULL, NULL, SSL_PKEY_P256_FALCON512);
     tls1_check_chain(s, NULL, NULL, NULL, SSL_PKEY_RSA3072_FALCON512);
+    tls1_check_chain(s, NULL, NULL, NULL, SSL_PKEY_FALCONPADDED512);
+    tls1_check_chain(s, NULL, NULL, NULL, SSL_PKEY_P256_FALCONPADDED512);
+    tls1_check_chain(s, NULL, NULL, NULL, SSL_PKEY_RSA3072_FALCONPADDED512);
     tls1_check_chain(s, NULL, NULL, NULL, SSL_PKEY_FALCON1024);
     tls1_check_chain(s, NULL, NULL, NULL, SSL_PKEY_P521_FALCON1024);
+    tls1_check_chain(s, NULL, NULL, NULL, SSL_PKEY_FALCONPADDED1024);
+    tls1_check_chain(s, NULL, NULL, NULL, SSL_PKEY_P521_FALCONPADDED1024);
     tls1_check_chain(s, NULL, NULL, NULL, SSL_PKEY_SPHINCSSHA2128FSIMPLE);
     tls1_check_chain(s, NULL, NULL, NULL, SSL_PKEY_P256_SPHINCSSHA2128FSIMPLE);
     tls1_check_chain(s, NULL, NULL, NULL, SSL_PKEY_RSA3072_SPHINCSSHA2128FSIMPLE);

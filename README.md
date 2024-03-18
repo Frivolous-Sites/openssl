@@ -3,7 +3,7 @@ OQS-OpenSSL\_1\_1\_1
 
 ## <span style="color: red;">Warning</span>
 
-<b>Although the Open Quantum Safe project has officially stopped supporting OpenSSL, I have decided to continue the most basic maintenance of OpenSSL, which is to keep it in sync with the algorithms in liboqs. This will enable us to use [QUIC](tree/OQS-OpenSSL_1_1_1-stable/quic). <span style="color: red;">THIS IS UNSAFE!!!</span></b>
+<b>Although the Open Quantum Safe project has officially stopped supporting OpenSSL, I have decided to continue the most basic maintenance of OpenSSL, which is to keep it in sync with the algorithms in liboqs. This will enable us to use [QUIC](https://github.com/Frivolous-Sites/openssl/tree/OQS-OpenSSL_1_1_1-stable/quic). <span style="color: red;">THIS IS UNSAFE!!!</span></b>
 
 ---
 
@@ -81,6 +81,7 @@ The following quantum-safe algorithms from liboqs are supported (assuming they h
 - **CRYSTALS-Kyber**: `kyber512`, `kyber768`, `kyber1024`
 - **FrodoKEM**: `frodo640aes`, `frodo640shake`, `frodo976aes`, `frodo976shake`, `frodo1344aes`, `frodo1344shake`
 - **HQC**: `hqc128`, `hqc192`, `hqc256`†
+- **ML-KEM**: `mlkem512`, `mlkem768`, `mlkem1024`
 <!--- OQS_TEMPLATE_FRAGMENT_LIST_KEXS_END -->
 
 If ``<KEX>`` is any of the algorithms listed above, the following hybrid algorithms are supported:
@@ -99,7 +100,9 @@ The following digital signature algorithms from liboqs are supported by the fork
 
 <!--- OQS_TEMPLATE_FRAGMENT_LIST_SIGS_START -->
 - **CRYSTALS-Dilithium**:`dilithium2`\*, `dilithium3`\*, `dilithium5`\*
-- **Falcon**:`falcon512`\*, `falcon1024`\*
+- **ML-DSA**:`mldsa44`\*, `mldsa65`\*, `mldsa87`\*
+- **Falcon**:`falcon512`\*, `falconpadded512`\*, `falcon1024`\*, `falconpadded1024`\*
+- **SPHINCS-Haraka**:
 - **SPHINCS-SHA2**:`sphincssha2128fsimple`\*, `sphincssha2128ssimple`\*, `sphincssha2192fsimple`\*, `sphincssha2192ssimple`, `sphincssha2256fsimple`, `sphincssha2256ssimple`
 - **SPHINCS-SHAKE**:`sphincsshake128fsimple`\*, `sphincsshake128ssimple`, `sphincsshake192fsimple`, `sphincsshake192ssimple`, `sphincsshake256fsimple`, `sphincsshake256ssimple`
 <!--- OQS_TEMPLATE_FRAGMENT_LIST_SIGS_END -->
@@ -149,9 +152,11 @@ The following instructions will download and build liboqs, then install it into 
 	git clone --branch main https://github.com/open-quantum-safe/liboqs.git
 	cd liboqs
 	mkdir build && cd build
-	cmake -GNinja -DCMAKE_INSTALL_PREFIX=<OPENSSL_DIR>/oqs -DOQS_USE_OPENSSL=OFF ..
+	cmake -GNinja -DCMAKE_INSTALL_PREFIX=<OPENSSL_DIR>/oqs ..
 	ninja
 	ninja install
+
+We set the `LIBOQS_DOCS_DIR` by running `export LIBOQS_DOCS_DIR=~/path/to/liboqs/docs`.
 
 Building liboqs requires your system to have (a standard) OpenSSL already installed. `configure` will detect it if it is located in a standard location, such as `/usr` or `/usr/local/opt/openssl` (for brew on macOS).  Otherwise, you may need to specify it with `-DOPENSSL_ROOT_DIR=<path-to-system-openssl-dir>` added to the `cmake` command.
 
@@ -196,7 +201,7 @@ The following instructions will download (using git, alternatively, [download an
 	cd liboqs
 	mkdir build
 	cd build
-	cmake -GNinja -DCMAKE_INSTALL_PREFIX=<OPENSSL_DIR>\oqs -DOQS_USE_OPENSSL=OFF ..
+	cmake -GNinja -DCMAKE_INSTALL_PREFIX=<OPENSSL_DIR>\oqs ..
 	ninja
 	ninja install
 
