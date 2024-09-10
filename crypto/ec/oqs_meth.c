@@ -111,6 +111,16 @@ int oqssl_sig_nids_list[] = {
         NID_sphincsshake128fsimple,
         NID_p256_sphincsshake128fsimple,
         NID_rsa3072_sphincsshake128fsimple,
+        NID_mayo1,
+        NID_p256_mayo1,
+        NID_mayo2,
+        NID_p256_mayo2,
+        NID_mayo3,
+        NID_p384_mayo3,
+        NID_mayo5,
+        NID_p521_mayo5,
+        NID_CROSSrsdp128balanced,
+        NID__CROSSrsdp128balanced,
 /////// OQS_TEMPLATE_FRAGMENT_LIST_KNOWN_NIDS_END
 };
 
@@ -213,6 +223,21 @@ char* get_oqs_alg_name(int openssl_nid)
     case NID_p256_sphincsshake128fsimple:
     case NID_rsa3072_sphincsshake128fsimple:
       return OQS_SIG_alg_sphincs_shake_128f_simple;
+    case NID_mayo1:
+    case NID_p256_mayo1:
+      return OQS_SIG_alg_mayo_1;
+    case NID_mayo2:
+    case NID_p256_mayo2:
+      return OQS_SIG_alg_mayo_2;
+    case NID_mayo3:
+    case NID_p384_mayo3:
+      return OQS_SIG_alg_mayo_3;
+    case NID_mayo5:
+    case NID_p521_mayo5:
+      return OQS_SIG_alg_mayo_5;
+    case NID_CROSSrsdp128balanced:
+    case NID__CROSSrsdp128balanced:
+      return OQS_SIG_alg_cross_rsdp_128_balanced;
     case NID_frodo640aes:
     case NID_p256_frodo640aes:
       return OQS_KEM_alg_frodokem_640_aes;
@@ -299,6 +324,11 @@ static int is_oqs_hybrid_alg(int openssl_nid)
     case NID_p384_sphincssha2192fsimple:
     case NID_p256_sphincsshake128fsimple:
     case NID_rsa3072_sphincsshake128fsimple:
+    case NID_p256_mayo1:
+    case NID_p256_mayo2:
+    case NID_p384_mayo3:
+    case NID_p521_mayo5:
+    case NID__CROSSrsdp128balanced:
 ///// OQS_TEMPLATE_FRAGMENT_LIST_HYBRID_NIDS_END
       return 1;
     default:
@@ -327,15 +357,19 @@ static int get_classical_nid(int hybrid_id)
     case NID_p256_sphincssha2128fsimple:
     case NID_p256_sphincssha2128ssimple:
     case NID_p256_sphincsshake128fsimple:
+    case NID_p256_mayo1:
+    case NID_p256_mayo2:
       return NID_X9_62_prime256v1;
     case NID_p384_dilithium3:
     case NID_p384_mldsa65:
     case NID_p384_sphincssha2192fsimple:
+    case NID_p384_mayo3:
       return NID_secp384r1;
     case NID_p521_dilithium5:
     case NID_p521_mldsa87:
     case NID_p521_falcon1024:
     case NID_p521_falconpadded1024:
+    case NID_p521_mayo5:
       return NID_secp521r1;///// OQS_TEMPLATE_FRAGMENT_ASSIGN_CLASSICAL_NIDS_END
     default:
       return 0;
@@ -382,6 +416,16 @@ static int get_oqs_nid(int hybrid_id)
     case NID_p256_sphincsshake128fsimple:
     case NID_rsa3072_sphincsshake128fsimple:
       return NID_sphincsshake128fsimple;
+    case NID_p256_mayo1:
+      return NID_mayo1;
+    case NID_p256_mayo2:
+      return NID_mayo2;
+    case NID_p384_mayo3:
+      return NID_mayo3;
+    case NID_p521_mayo5:
+      return NID_mayo5;
+    case NID__CROSSrsdp128balanced:
+      return NID_CROSSrsdp128balanced;
 ///// OQS_TEMPLATE_FRAGMENT_ASSIGN_OQS_NID_END
     default:
       return 0;
@@ -547,6 +591,21 @@ static int get_oqs_security_bits(int openssl_nid)
     case NID_sphincsshake128fsimple:
     case NID_p256_sphincsshake128fsimple:
     case NID_rsa3072_sphincsshake128fsimple:
+      return 128;
+    case NID_mayo1:
+    case NID_p256_mayo1:
+      return 128;
+    case NID_mayo2:
+    case NID_p256_mayo2:
+      return 128;
+    case NID_mayo3:
+    case NID_p384_mayo3:
+      return 192;
+    case NID_mayo5:
+    case NID_p521_mayo5:
+      return 256;
+    case NID_CROSSrsdp128balanced:
+    case NID__CROSSrsdp128balanced:
       return 128;
 ///// OQS_TEMPLATE_FRAGMENT_GET_SIG_SECURITY_BITS_END
     default:
@@ -1155,6 +1214,16 @@ static int oqs_item_verify(EVP_MD_CTX *ctx, const ASN1_ITEM *it, void *asn,
         nid != NID_sphincsshake128fsimple &&
         nid != NID_p256_sphincsshake128fsimple &&
         nid != NID_rsa3072_sphincsshake128fsimple &&
+        nid != NID_mayo1 &&
+        nid != NID_p256_mayo1 &&
+        nid != NID_mayo2 &&
+        nid != NID_p256_mayo2 &&
+        nid != NID_mayo3 &&
+        nid != NID_p384_mayo3 &&
+        nid != NID_mayo5 &&
+        nid != NID_p521_mayo5 &&
+        nid != NID_CROSSrsdp128balanced &&
+        nid != NID__CROSSrsdp128balanced &&
         1 /* This is just to faciliate templating. */
 ///// OQS_TEMPLATE_FRAGMENT_CHECK_IF_KNOWN_NID_END
     ) || ptype != V_ASN1_UNDEF) {
@@ -1750,4 +1819,14 @@ DEFINE_OQS_EVP_METHODS(p384_sphincssha2192fsimple, NID_p384_sphincssha2192fsimpl
 DEFINE_OQS_EVP_METHODS(sphincsshake128fsimple, NID_sphincsshake128fsimple, "sphincsshake128fsimple", "OpenSSL SPHINCS+-SHAKE-128f-simple algorithm")
 DEFINE_OQS_EVP_METHODS(p256_sphincsshake128fsimple, NID_p256_sphincsshake128fsimple, "p256_sphincsshake128fsimple", "OpenSSL ECDSA p256 SPHINCS+-SHAKE-128f-simple algorithm")
 DEFINE_OQS_EVP_METHODS(rsa3072_sphincsshake128fsimple, NID_rsa3072_sphincsshake128fsimple, "rsa3072_sphincsshake128fsimple", "OpenSSL RSA3072 SPHINCS+-SHAKE-128f-simple algorithm")
+DEFINE_OQS_EVP_METHODS(mayo1, NID_mayo1, "mayo1", "OpenSSL MAYO-1 algorithm")
+DEFINE_OQS_EVP_METHODS(p256_mayo1, NID_p256_mayo1, "p256_mayo1", "OpenSSL ECDSA p256 MAYO-1 algorithm")
+DEFINE_OQS_EVP_METHODS(mayo2, NID_mayo2, "mayo2", "OpenSSL MAYO-2 algorithm")
+DEFINE_OQS_EVP_METHODS(p256_mayo2, NID_p256_mayo2, "p256_mayo2", "OpenSSL ECDSA p256 MAYO-2 algorithm")
+DEFINE_OQS_EVP_METHODS(mayo3, NID_mayo3, "mayo3", "OpenSSL MAYO-3 algorithm")
+DEFINE_OQS_EVP_METHODS(p384_mayo3, NID_p384_mayo3, "p384_mayo3", "OpenSSL ECDSA p384 MAYO-3 algorithm")
+DEFINE_OQS_EVP_METHODS(mayo5, NID_mayo5, "mayo5", "OpenSSL MAYO-5 algorithm")
+DEFINE_OQS_EVP_METHODS(p521_mayo5, NID_p521_mayo5, "p521_mayo5", "OpenSSL ECDSA p521 MAYO-5 algorithm")
+DEFINE_OQS_EVP_METHODS(CROSSrsdp128balanced, NID_CROSSrsdp128balanced, "CROSSrsdp128balanced", "OpenSSL CROSS-rsdp-128-balanced algorithm")
+DEFINE_OQS_EVP_METHODS(_CROSSrsdp128balanced, NID__CROSSrsdp128balanced, "_CROSSrsdp128balanced", "OpenSSL  CROSS-rsdp-128-balanced algorithm")
 ///// OQS_TEMPLATE_FRAGMENT_DEFINE_OQS_EVP_METHS_END

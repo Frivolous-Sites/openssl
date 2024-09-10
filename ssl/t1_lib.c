@@ -196,9 +196,9 @@ static const TLS_GROUP_INFO oqs_nid_list[] = {
     {NID_kyber512, 128, TLS_CURVE_CUSTOM}, /* kyber512 (0x023A) */
     {NID_kyber768, 192, TLS_CURVE_CUSTOM}, /* kyber768 (0x023C) */
     {NID_kyber1024, 256, TLS_CURVE_CUSTOM}, /* kyber1024 (0x023D) */
-    {NID_mlkem512, 128, TLS_CURVE_CUSTOM}, /* mlkem512 (0x0247) */
-    {NID_mlkem768, 192, TLS_CURVE_CUSTOM}, /* mlkem768 (0x0248) */
-    {NID_mlkem1024, 256, TLS_CURVE_CUSTOM}, /* mlkem1024 (0x0249) */
+    {NID_mlkem512, 128, TLS_CURVE_CUSTOM}, /* mlkem512 (0x024A) */
+    {NID_mlkem768, 192, TLS_CURVE_CUSTOM}, /* mlkem768 (0x0768) */
+    {NID_mlkem1024, 256, TLS_CURVE_CUSTOM}, /* mlkem1024 (0x1024) */
     {NID_bikel1, 128, TLS_CURVE_CUSTOM}, /* bikel1 (0x0241) */
     {NID_bikel3, 192, TLS_CURVE_CUSTOM}, /* bikel3 (0x0242) */
     {NID_bikel5, 256, TLS_CURVE_CUSTOM}, /* bikel5 (0x0243) */
@@ -219,9 +219,9 @@ static const TLS_GROUP_INFO oqs_hybrid_nid_list[] = {
  {NID_p256_kyber512, 128, TLS_CURVE_CUSTOM}, /* p256/384/521 + kyber512 hybrid (0x023A) */
  {NID_p384_kyber768, 192, TLS_CURVE_CUSTOM}, /* p256/384/521 + kyber768 hybrid (0x023C) */
  {NID_p521_kyber1024, 256, TLS_CURVE_CUSTOM}, /* p256/384/521 + kyber1024 hybrid (0x023D) */
- {NID_p256_mlkem512, 128, TLS_CURVE_CUSTOM}, /* p256/384/521 + mlkem512 hybrid (0x0247) */
- {NID_p384_mlkem768, 192, TLS_CURVE_CUSTOM}, /* p256/384/521 + mlkem768 hybrid (0x0248) */
- {NID_p521_mlkem1024, 256, TLS_CURVE_CUSTOM}, /* p256/384/521 + mlkem1024 hybrid (0x0249) */
+ {NID_p256_mlkem512, 128, TLS_CURVE_CUSTOM}, /* p256/384/521 + mlkem512 hybrid (0x024A) */
+ {NID_p384_mlkem768, 192, TLS_CURVE_CUSTOM}, /* p256/384/521 + mlkem768 hybrid (0x0768) */
+ {NID_p521_mlkem1024, 256, TLS_CURVE_CUSTOM}, /* p256/384/521 + mlkem1024 hybrid (0x1024) */
  {NID_p256_bikel1, 128, TLS_CURVE_CUSTOM}, /* p256/384/521 + bikel1 hybrid (0x0241) */
  {NID_p384_bikel3, 192, TLS_CURVE_CUSTOM}, /* p256/384/521 + bikel3 hybrid (0x0242) */
  {NID_p521_bikel5, 256, TLS_CURVE_CUSTOM}, /* p256/384/521 + bikel5 hybrid (0x0243) */
@@ -248,7 +248,7 @@ static const uint16_t eccurves_default[] = {
     0x2F00, /* OQS frodo640aes hybrid */
     0x2F01, /* OQS frodo640shake hybrid */
     0x2F3A, /* OQS kyber512 hybrid */
-    0x2F47, /* OQS mlkem512 hybrid */
+    0x2F4B, /* OQS mlkem512 hybrid */
     0x2F41, /* OQS bikel1 hybrid */
     0x2F44, /* OQS hqc128 hybrid */
 ///// OQS_TEMPLATE_FRAGMENT_ECCURVES_DEFAULT_HYBRID_END
@@ -287,12 +287,12 @@ static const uint16_t oqs_all_tls13_server_groups[] = {
     0x2F3C, /* OQS kyber768 hybrid */
     0x023D, /* kyber1024 */
     0x2F3D, /* OQS kyber1024 hybrid */
-    0x0247, /* mlkem512 */
-    0x2F47, /* OQS mlkem512 hybrid */
-    0x0248, /* mlkem768 */
-    0x2F48, /* OQS mlkem768 hybrid */
-    0x0249, /* mlkem1024 */
-    0x2F49, /* OQS mlkem1024 hybrid */
+    0x024A, /* mlkem512 */
+    0x2F4B, /* OQS mlkem512 hybrid */
+    0x0768, /* mlkem768 */
+    0x2F4C, /* OQS mlkem768 hybrid */
+    0x1024, /* mlkem1024 */
+    0x2F4D, /* OQS mlkem1024 hybrid */
     0x0241, /* bikel1 */
     0x2F41, /* OQS bikel1 hybrid */
     0x0242, /* bikel3 */
@@ -887,6 +887,16 @@ static const uint16_t tls12_sigalgs[] = {
     TLSEXT_SIGALG_sphincsshake128fsimple,
     TLSEXT_SIGALG_p256_sphincsshake128fsimple,
     TLSEXT_SIGALG_rsa3072_sphincsshake128fsimple,
+    TLSEXT_SIGALG_mayo1,
+    TLSEXT_SIGALG_p256_mayo1,
+    TLSEXT_SIGALG_mayo2,
+    TLSEXT_SIGALG_p256_mayo2,
+    TLSEXT_SIGALG_mayo3,
+    TLSEXT_SIGALG_p384_mayo3,
+    TLSEXT_SIGALG_mayo5,
+    TLSEXT_SIGALG_p521_mayo5,
+    TLSEXT_SIGALG_CROSSrsdp128balanced,
+    TLSEXT_SIGALG__CROSSrsdp128balanced,
 ///// OQS_TEMPLATE_FRAGMENT_DEFINE_TLS12_SIGALGS_END
 
     TLSEXT_SIGALG_rsa_pss_pss_sha256,
@@ -1121,6 +1131,36 @@ static const SIGALG_LOOKUP sigalg_lookup_tbl[] = {
      NID_undef, NID_undef},
     {"rsa3072_sphincsshake128fsimple", TLSEXT_SIGALG_rsa3072_sphincsshake128fsimple,
      NID_undef, -1, EVP_PKEY_RSA3072_SPHINCSSHAKE128FSIMPLE, SSL_PKEY_RSA3072_SPHINCSSHAKE128FSIMPLE,
+     NID_undef, NID_undef},
+    {"mayo1", TLSEXT_SIGALG_mayo1,
+     NID_undef, -1, EVP_PKEY_MAYO1, SSL_PKEY_MAYO1,
+     NID_undef, NID_undef},
+    {"p256_mayo1", TLSEXT_SIGALG_p256_mayo1,
+     NID_undef, -1, EVP_PKEY_P256_MAYO1, SSL_PKEY_P256_MAYO1,
+     NID_undef, NID_undef},
+    {"mayo2", TLSEXT_SIGALG_mayo2,
+     NID_undef, -1, EVP_PKEY_MAYO2, SSL_PKEY_MAYO2,
+     NID_undef, NID_undef},
+    {"p256_mayo2", TLSEXT_SIGALG_p256_mayo2,
+     NID_undef, -1, EVP_PKEY_P256_MAYO2, SSL_PKEY_P256_MAYO2,
+     NID_undef, NID_undef},
+    {"mayo3", TLSEXT_SIGALG_mayo3,
+     NID_undef, -1, EVP_PKEY_MAYO3, SSL_PKEY_MAYO3,
+     NID_undef, NID_undef},
+    {"p384_mayo3", TLSEXT_SIGALG_p384_mayo3,
+     NID_undef, -1, EVP_PKEY_P384_MAYO3, SSL_PKEY_P384_MAYO3,
+     NID_undef, NID_undef},
+    {"mayo5", TLSEXT_SIGALG_mayo5,
+     NID_undef, -1, EVP_PKEY_MAYO5, SSL_PKEY_MAYO5,
+     NID_undef, NID_undef},
+    {"p521_mayo5", TLSEXT_SIGALG_p521_mayo5,
+     NID_undef, -1, EVP_PKEY_P521_MAYO5, SSL_PKEY_P521_MAYO5,
+     NID_undef, NID_undef},
+    {"CROSSrsdp128balanced", TLSEXT_SIGALG_CROSSrsdp128balanced,
+     NID_undef, -1, EVP_PKEY_CROSSRSDP128BALANCED, SSL_PKEY_CROSSRSDP128BALANCED,
+     NID_undef, NID_undef},
+    {"_CROSSrsdp128balanced", TLSEXT_SIGALG__CROSSrsdp128balanced,
+     NID_undef, -1, EVP_PKEY__CROSSRSDP128BALANCED, SSL_PKEY__CROSSRSDP128BALANCED,
      NID_undef, NID_undef},
 ///// OQS_TEMPLATE_FRAGMENT_POPULATE_SIGALG_TBL_END
 };
@@ -1434,6 +1474,26 @@ static int sigalg_security_bits(const SIGALG_LOOKUP *lu)
         else if(lu->sigalg == TLSEXT_SIGALG_p256_sphincsshake128fsimple)
             secbits = 128;
         else if(lu->sigalg == TLSEXT_SIGALG_rsa3072_sphincsshake128fsimple)
+            secbits = 128;
+        else if(lu->sigalg == TLSEXT_SIGALG_mayo1)
+            secbits = 128;
+        else if(lu->sigalg == TLSEXT_SIGALG_p256_mayo1)
+            secbits = 128;
+        else if(lu->sigalg == TLSEXT_SIGALG_mayo2)
+            secbits = 128;
+        else if(lu->sigalg == TLSEXT_SIGALG_p256_mayo2)
+            secbits = 128;
+        else if(lu->sigalg == TLSEXT_SIGALG_mayo3)
+            secbits = 192;
+        else if(lu->sigalg == TLSEXT_SIGALG_p384_mayo3)
+            secbits = 192;
+        else if(lu->sigalg == TLSEXT_SIGALG_mayo5)
+            secbits = 256;
+        else if(lu->sigalg == TLSEXT_SIGALG_p521_mayo5)
+            secbits = 256;
+        else if(lu->sigalg == TLSEXT_SIGALG_CROSSrsdp128balanced)
+            secbits = 128;
+        else if(lu->sigalg == TLSEXT_SIGALG__CROSSrsdp128balanced)
             secbits = 128;
 ///// OQS_TEMPLATE_FRAGMENT_MAP_SIGALG_TO_BIT_SECURITY_END
     }
@@ -2886,6 +2946,16 @@ void tls1_set_cert_validity(SSL *s)
     tls1_check_chain(s, NULL, NULL, NULL, SSL_PKEY_SPHINCSSHAKE128FSIMPLE);
     tls1_check_chain(s, NULL, NULL, NULL, SSL_PKEY_P256_SPHINCSSHAKE128FSIMPLE);
     tls1_check_chain(s, NULL, NULL, NULL, SSL_PKEY_RSA3072_SPHINCSSHAKE128FSIMPLE);
+    tls1_check_chain(s, NULL, NULL, NULL, SSL_PKEY_MAYO1);
+    tls1_check_chain(s, NULL, NULL, NULL, SSL_PKEY_P256_MAYO1);
+    tls1_check_chain(s, NULL, NULL, NULL, SSL_PKEY_MAYO2);
+    tls1_check_chain(s, NULL, NULL, NULL, SSL_PKEY_P256_MAYO2);
+    tls1_check_chain(s, NULL, NULL, NULL, SSL_PKEY_MAYO3);
+    tls1_check_chain(s, NULL, NULL, NULL, SSL_PKEY_P384_MAYO3);
+    tls1_check_chain(s, NULL, NULL, NULL, SSL_PKEY_MAYO5);
+    tls1_check_chain(s, NULL, NULL, NULL, SSL_PKEY_P521_MAYO5);
+    tls1_check_chain(s, NULL, NULL, NULL, SSL_PKEY_CROSSRSDP128BALANCED);
+    tls1_check_chain(s, NULL, NULL, NULL, SSL_PKEY__CROSSRSDP128BALANCED);
 ///// OQS_TEMPLATE_FRAGMENT_ADD_CERT_CHAIN_CHECKS_END
 }
 

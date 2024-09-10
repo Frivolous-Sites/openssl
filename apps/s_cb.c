@@ -322,6 +322,26 @@ static const char *get_sigtype(int nid)
         return "ECDSA p256 - SPHINCS+-SHAKE-128f-simple";
     case NID_rsa3072_sphincsshake128fsimple:
         return "RSA3072 - SPHINCS+-SHAKE-128f-simple";
+    case NID_mayo1:
+        return "MAYO-1";
+    case NID_p256_mayo1:
+        return "ECDSA p256 - MAYO-1";
+    case NID_mayo2:
+        return "MAYO-2";
+    case NID_p256_mayo2:
+        return "ECDSA p256 - MAYO-2";
+    case NID_mayo3:
+        return "MAYO-3";
+    case NID_p384_mayo3:
+        return "ECDSA p384 - MAYO-3";
+    case NID_mayo5:
+        return "MAYO-5";
+    case NID_p521_mayo5:
+        return "ECDSA p521 - MAYO-5";
+    case NID_CROSSrsdp128balanced:
+        return "CROSS-rsdp-128-balanced";
+    case NID__CROSSrsdp128balanced:
+        return " - CROSS-rsdp-128-balanced";
 ///// OQS_TEMPLATE_FRAGMENT_SIG_NAME_STR_END
     default:
         return NULL;
@@ -484,9 +504,9 @@ static const char* OQS_CURVE_ID_NAME_STR(int id) {
   case 0x023A: return "kyber512";
   case 0x023C: return "kyber768";
   case 0x023D: return "kyber1024";
-  case 0x0247: return "mlkem512";
-  case 0x0248: return "mlkem768";
-  case 0x0249: return "mlkem1024";
+  case 0x024A: return "mlkem512";
+  case 0x0768: return "mlkem768";
+  case 0x1024: return "mlkem1024";
   case 0x0241: return "bikel1";
   case 0x0242: return "bikel3";
   case 0x0243: return "bikel5";
@@ -504,9 +524,9 @@ static const char* OQS_CURVE_ID_NAME_STR(int id) {
    case 0x2F3A: return "p256_kyber512 hybrid";
    case 0x2F3C: return "p384_kyber768 hybrid";
    case 0x2F3D: return "p521_kyber1024 hybrid";
-   case 0x2F47: return "p256_mlkem512 hybrid";
-   case 0x2F48: return "p384_mlkem768 hybrid";
-   case 0x2F49: return "p521_mlkem1024 hybrid";
+   case 0x2F4B: return "p256_mlkem512 hybrid";
+   case 0x2F4C: return "p384_mlkem768 hybrid";
+   case 0x2F4D: return "p521_mlkem1024 hybrid";
    case 0x2F41: return "p256_bikel1 hybrid";
    case 0x2F42: return "p384_bikel3 hybrid";
    case 0x2F43: return "p521_bikel5 hybrid";

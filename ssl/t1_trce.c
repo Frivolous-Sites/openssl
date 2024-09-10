@@ -651,6 +651,16 @@ static const ssl_trace_tbl ssl_sigalg_tbl[] = {
     {TLSEXT_SIGALG_sphincsshake128fsimple, "sphincsshake128fsimple"},
     {TLSEXT_SIGALG_p256_sphincsshake128fsimple, "p256_sphincsshake128fsimple"},
     {TLSEXT_SIGALG_rsa3072_sphincsshake128fsimple, "rsa3072_sphincsshake128fsimple"},
+    {TLSEXT_SIGALG_mayo1, "mayo1"},
+    {TLSEXT_SIGALG_p256_mayo1, "p256_mayo1"},
+    {TLSEXT_SIGALG_mayo2, "mayo2"},
+    {TLSEXT_SIGALG_p256_mayo2, "p256_mayo2"},
+    {TLSEXT_SIGALG_mayo3, "mayo3"},
+    {TLSEXT_SIGALG_p384_mayo3, "p384_mayo3"},
+    {TLSEXT_SIGALG_mayo5, "mayo5"},
+    {TLSEXT_SIGALG_p521_mayo5, "p521_mayo5"},
+    {TLSEXT_SIGALG_CROSSrsdp128balanced, "CROSSrsdp128balanced"},
+    {TLSEXT_SIGALG__CROSSrsdp128balanced, "_CROSSrsdp128balanced"},
 ///// OQS_TEMPLATE_FRAGMENT_POPULATE_SIGALG_TBL_END
 };
 

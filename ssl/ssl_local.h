@@ -273,6 +273,26 @@
 #define SSL_aP256_SPHINCSSHAKE128FSIMPLE 0x20000000000U
 /* RSA3072 - SPHINCS+-SHAKE-128f-simple auth */
 #define SSL_aRSA3072_SPHINCSSHAKE128FSIMPLE 0x40000000000U
+/* MAYO-1 auth */
+#define SSL_aMAYO1 0x80000000000U
+/* ECDSA p256 - MAYO-1 auth */
+#define SSL_aP256_MAYO1 0x100000000000U
+/* MAYO-2 auth */
+#define SSL_aMAYO2 0x200000000000U
+/* ECDSA p256 - MAYO-2 auth */
+#define SSL_aP256_MAYO2 0x400000000000U
+/* MAYO-3 auth */
+#define SSL_aMAYO3 0x800000000000U
+/* ECDSA p384 - MAYO-3 auth */
+#define SSL_aP384_MAYO3 0x1000000000000U
+/* MAYO-5 auth */
+#define SSL_aMAYO5 0x2000000000000U
+/* ECDSA p521 - MAYO-5 auth */
+#define SSL_aP521_MAYO5 0x4000000000000U
+/* CROSS-rsdp-128-balanced auth */
+#define SSL_aCROSSRSDP128BALANCED 0x8000000000000U
+/*  - CROSS-rsdp-128-balanced auth */
+#define SSL_a_CROSSRSDP128BALANCED 0x10000000000000U
 ///// OQS_TEMPLATE_FRAGMENT_DEFINE_SIG_MASKS_END
 /* Any appropriate signature auth (for TLS 1.3 ciphersuites) */
 # define SSL_aANY                0x00000000U
@@ -492,8 +512,18 @@
 #define SSL_PKEY_SPHINCSSHAKE128FSIMPLE 41
 #define SSL_PKEY_P256_SPHINCSSHAKE128FSIMPLE 42
 #define SSL_PKEY_RSA3072_SPHINCSSHAKE128FSIMPLE 43
+#define SSL_PKEY_MAYO1 44
+#define SSL_PKEY_P256_MAYO1 45
+#define SSL_PKEY_MAYO2 46
+#define SSL_PKEY_P256_MAYO2 47
+#define SSL_PKEY_MAYO3 48
+#define SSL_PKEY_P384_MAYO3 49
+#define SSL_PKEY_MAYO5 50
+#define SSL_PKEY_P521_MAYO5 51
+#define SSL_PKEY_CROSSRSDP128BALANCED 52
+#define SSL_PKEY__CROSSRSDP128BALANCED 53
 
-#define SSL_PKEY_NUM 44
+#define SSL_PKEY_NUM 54
 ///// OQS_TEMPLATE_FRAGMENT_DEFINE_SSL_PKEYS_END
 
 /*-
@@ -522,9 +552,9 @@
   (nid == NID_kyber512 ? 0x023A : \
   (nid == NID_kyber768 ? 0x023C : \
   (nid == NID_kyber1024 ? 0x023D : \
-  (nid == NID_mlkem512 ? 0x0247 : \
-  (nid == NID_mlkem768 ? 0x0248 : \
-  (nid == NID_mlkem1024 ? 0x0249 : \
+  (nid == NID_mlkem512 ? 0x024A : \
+  (nid == NID_mlkem768 ? 0x0768 : \
+  (nid == NID_mlkem1024 ? 0x1024 : \
   (nid == NID_bikel1 ? 0x0241 : \
   (nid == NID_bikel3 ? 0x0242 : \
   (nid == NID_bikel5 ? 0x0243 : \
@@ -546,9 +576,9 @@
     (nid == NID_p256_kyber512 ? 0x2F3A : \
     (nid == NID_p384_kyber768 ? 0x2F3C : \
     (nid == NID_p521_kyber1024 ? 0x2F3D : \
-    (nid == NID_p256_mlkem512 ? 0x2F47 : \
-    (nid == NID_p384_mlkem768 ? 0x2F48 : \
-    (nid == NID_p521_mlkem1024 ? 0x2F49 : \
+    (nid == NID_p256_mlkem512 ? 0x2F4B : \
+    (nid == NID_p384_mlkem768 ? 0x2F4C : \
+    (nid == NID_p521_mlkem1024 ? 0x2F4D : \
     (nid == NID_p256_bikel1 ? 0x2F41 : \
     (nid == NID_p384_bikel3 ? 0x2F42 : \
     (nid == NID_p521_bikel5 ? 0x2F43 : \
@@ -571,9 +601,9 @@
   (curveID == 0x023A || curveID == 0x2F3A ? NID_kyber512 : \
   (curveID == 0x023C || curveID == 0x2F3C ? NID_kyber768 : \
   (curveID == 0x023D || curveID == 0x2F3D ? NID_kyber1024 : \
-  (curveID == 0x0247 || curveID == 0x2F47 ? NID_mlkem512 : \
-  (curveID == 0x0248 || curveID == 0x2F48 ? NID_mlkem768 : \
-  (curveID == 0x0249 || curveID == 0x2F49 ? NID_mlkem1024 : \
+  (curveID == 0x024A || curveID == 0x2F4B ? NID_mlkem512 : \
+  (curveID == 0x0768 || curveID == 0x2F4C ? NID_mlkem768 : \
+  (curveID == 0x1024 || curveID == 0x2F4D ? NID_mlkem1024 : \
   (curveID == 0x0241 || curveID == 0x2F41 ? NID_bikel1 : \
   (curveID == 0x0242 || curveID == 0x2F42 ? NID_bikel3 : \
   (curveID == 0x0243 || curveID == 0x2F43 ? NID_bikel5 : \
@@ -596,9 +626,9 @@
     (curveID == 0x2F3A ? NID_p256_kyber512 : \
     (curveID == 0x2F3C ? NID_p384_kyber768 : \
     (curveID == 0x2F3D ? NID_p521_kyber1024 : \
-    (curveID == 0x2F47 ? NID_p256_mlkem512 : \
-    (curveID == 0x2F48 ? NID_p384_mlkem768 : \
-    (curveID == 0x2F49 ? NID_p521_mlkem1024 : \
+    (curveID == 0x2F4B ? NID_p256_mlkem512 : \
+    (curveID == 0x2F4C ? NID_p384_mlkem768 : \
+    (curveID == 0x2F4D ? NID_p521_mlkem1024 : \
     (curveID == 0x2F41 ? NID_p256_bikel1 : \
     (curveID == 0x2F42 ? NID_p384_bikel3 : \
     (curveID == 0x2F43 ? NID_p521_bikel5 : \
@@ -655,9 +685,9 @@
   (cid == 0x2F3A ?23: \
   (cid == 0x2F3C ?24: \
   (cid == 0x2F3D ?25: \
-  (cid == 0x2F47 ?23: \
-  (cid == 0x2F48 ?24: \
-  (cid == 0x2F49 ?25: \
+  (cid == 0x2F4B ?23: \
+  (cid == 0x2F4C ?24: \
+  (cid == 0x2F4D ?25: \
   (cid == 0x2F41 ?23: \
   (cid == 0x2F42 ?24: \
   (cid == 0x2F43 ?25: \
@@ -2365,6 +2395,16 @@ typedef enum downgrade_en {
 #define TLSEXT_SIGALG_sphincsshake128fsimple 0xfec2
 #define TLSEXT_SIGALG_p256_sphincsshake128fsimple 0xfec3
 #define TLSEXT_SIGALG_rsa3072_sphincsshake128fsimple 0xfec4
+#define TLSEXT_SIGALG_mayo1 0xfeee
+#define TLSEXT_SIGALG_p256_mayo1 0xfef2
+#define TLSEXT_SIGALG_mayo2 0xfeef
+#define TLSEXT_SIGALG_p256_mayo2 0xfef3
+#define TLSEXT_SIGALG_mayo3 0xfef0
+#define TLSEXT_SIGALG_p384_mayo3 0xfef4
+#define TLSEXT_SIGALG_mayo5 0xfef1
+#define TLSEXT_SIGALG_p521_mayo5 0xfef5
+#define TLSEXT_SIGALG_CROSSrsdp128balanced 0xfef6
+#define TLSEXT_SIGALG__CROSSrsdp128balanced 
 ///// OQS_TEMPLATE_FRAGMENT_DEFINE_SIG_CODE_POINTS_END
 
 /* Known PSK key exchange modes */

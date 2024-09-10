@@ -18,12 +18,12 @@
     { 0x2F3C, "p384_kyber768" }, \
     { 0x023D, "kyber1024" }, \
     { 0x2F3D, "p521_kyber1024" }, \
-    { 0x0247, "mlkem512" }, \
-    { 0x2F47, "p256_mlkem512" }, \
-    { 0x0248, "mlkem768" }, \
-    { 0x2F48, "p384_mlkem768" }, \
-    { 0x0249, "mlkem1024" }, \
-    { 0x2F49, "p521_mlkem1024" }, \
+    { 0x024A, "mlkem512" }, \
+    { 0x2F4B, "p256_mlkem512" }, \
+    { 0x0768, "mlkem768" }, \
+    { 0x2F4C, "p384_mlkem768" }, \
+    { 0x1024, "mlkem1024" }, \
+    { 0x2F4D, "p521_mlkem1024" }, \
     { 0x0241, "bikel1" }, \
     { 0x2F41, "p256_bikel1" }, \
     { 0x0242, "bikel3" }, \
@@ -75,6 +75,16 @@
     { 0xfec2, "sphincsshake128fsimple" }, \
     { 0xfec3, "p256_sphincsshake128fsimple" }, \
     { 0xfec4, "rsa3072_sphincsshake128fsimple" }, \
+    { 0xfeee, "mayo1" }, \
+    { 0xfef2, "p256_mayo1" }, \
+    { 0xfeef, "mayo2" }, \
+    { 0xfef3, "p256_mayo2" }, \
+    { 0xfef0, "mayo3" }, \
+    { 0xfef4, "p384_mayo3" }, \
+    { 0xfef1, "mayo5" }, \
+    { 0xfef5, "p521_mayo5" }, \
+    { 0xfef6, "CROSSrsdp128balanced" }, \
+    { , "_CROSSrsdp128balanced" }, \
 ///// OQS_TEMPLATE_FRAGMENT_ASSIGN_SIG_CPS_END
 
 ///// OQS_TEMPLATE_FRAGMENT_ASSIGN_SIG_OIDS_START
@@ -86,12 +96,12 @@
 	oid_add_from_string("p384_dilithium3", "1.3.9999.2.7.3"); \
 	oid_add_from_string("dilithium5", "1.3.6.1.4.1.2.267.7.8.7"); \
 	oid_add_from_string("p521_dilithium5", "1.3.9999.2.7.4"); \
-	oid_add_from_string("mldsa44", "1.3.6.1.4.1.2.267.12.4.4"); \
+	oid_add_from_string("mldsa44", "2.16.840.1.101.3.4.3.17"); \
 	oid_add_from_string("p256_mldsa44", "1.3.9999.7.1"); \
 	oid_add_from_string("rsa3072_mldsa44", "1.3.9999.7.2"); \
-	oid_add_from_string("mldsa65", "1.3.6.1.4.1.2.267.12.6.5"); \
+	oid_add_from_string("mldsa65", "2.16.840.1.101.3.4.3.18"); \
 	oid_add_from_string("p384_mldsa65", "1.3.9999.7.3"); \
-	oid_add_from_string("mldsa87", "1.3.6.1.4.1.2.267.12.8.7"); \
+	oid_add_from_string("mldsa87", "2.16.840.1.101.3.4.3.19"); \
 	oid_add_from_string("p521_mldsa87", "1.3.9999.7.4"); \
 	oid_add_from_string("falcon512", "1.3.9999.3.11"); \
 	oid_add_from_string("p256_falcon512", "1.3.9999.3.12"); \
@@ -114,6 +124,16 @@
 	oid_add_from_string("sphincsshake128fsimple", "1.3.9999.6.7.13"); \
 	oid_add_from_string("p256_sphincsshake128fsimple", "1.3.9999.6.7.14"); \
 	oid_add_from_string("rsa3072_sphincsshake128fsimple", "1.3.9999.6.7.15"); \
+	oid_add_from_string("mayo1", "1.3.9999.8.1.1"); \
+	oid_add_from_string("p256_mayo1", "1.3.9999.8.1.2"); \
+	oid_add_from_string("mayo2", "1.3.9999.8.2.1"); \
+	oid_add_from_string("p256_mayo2", "1.3.9999.8.2.2"); \
+	oid_add_from_string("mayo3", "1.3.9999.8.3.1"); \
+	oid_add_from_string("p384_mayo3", "1.3.9999.8.3.2"); \
+	oid_add_from_string("mayo5", "1.3.9999.8.5.1"); \
+	oid_add_from_string("p521_mayo5", "1.3.9999.8.5.2"); \
+	oid_add_from_string("CROSSrsdp128balanced", "1.3.6.1.4.1.62245.2.1.1"); \
+	oid_add_from_string("_CROSSrsdp128balanced", ""); \
 
 
 ///// OQS_TEMPLATE_FRAGMENT_ASSIGN_SIG_OIDS_END

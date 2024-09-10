@@ -59,6 +59,16 @@ p384_sphincssha2192fsimple	sha512	p384_sphincssha2192fsimple
 sphincsshake128fsimple	sha512	sphincsshake128fsimple
 p256_sphincsshake128fsimple	sha512	p256_sphincsshake128fsimple
 rsa3072_sphincsshake128fsimple	sha512	rsa3072_sphincsshake128fsimple
+mayo1	sha512	mayo1
+p256_mayo1	sha512	p256_mayo1
+mayo2	sha512	mayo2
+p256_mayo2	sha512	p256_mayo2
+mayo3	sha512	mayo3
+p384_mayo3	sha512	p384_mayo3
+mayo5	sha512	mayo5
+p521_mayo5	sha512	p521_mayo5
+CROSSrsdp128balanced	sha512	CROSSrsdp128balanced
+_CROSSrsdp128balanced	sha512	_CROSSrsdp128balanced
 ##### OQS_TEMPLATE_FRAGMENT_LIST_OQS_SIGS_END
 
 

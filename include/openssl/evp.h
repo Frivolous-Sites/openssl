@@ -99,10 +99,20 @@
 # define EVP_PKEY_SPHINCSSHAKE128FSIMPLE NID_sphincsshake128fsimple
 # define EVP_PKEY_P256_SPHINCSSHAKE128FSIMPLE NID_p256_sphincsshake128fsimple
 # define EVP_PKEY_RSA3072_SPHINCSSHAKE128FSIMPLE NID_rsa3072_sphincsshake128fsimple
-#define OQS_OPENSSL_SIG_algs_length 35
+# define EVP_PKEY_MAYO1 NID_mayo1
+# define EVP_PKEY_P256_MAYO1 NID_p256_mayo1
+# define EVP_PKEY_MAYO2 NID_mayo2
+# define EVP_PKEY_P256_MAYO2 NID_p256_mayo2
+# define EVP_PKEY_MAYO3 NID_mayo3
+# define EVP_PKEY_P384_MAYO3 NID_p384_mayo3
+# define EVP_PKEY_MAYO5 NID_mayo5
+# define EVP_PKEY_P521_MAYO5 NID_p521_mayo5
+# define EVP_PKEY_CROSSRSDP128BALANCED NID_CROSSrsdp128balanced
+# define EVP_PKEY__CROSSRSDP128BALANCED NID__CROSSrsdp128balanced
+#define OQS_OPENSSL_SIG_algs_length 45
 #define OQS_OPENSSL_KEM_algs_length 18
 #define IS_OQS_OPENSSL_KEM_NID(a) ((a >= 0x01FF) && (a <= NID_p521_hqc256))
-#define IS_OQS_OPENSSL_SIG_NID(a) ((a >= NID_dilithium2) && (a <= NID_rsa3072_sphincsshake128fsimple))
+#define IS_OQS_OPENSSL_SIG_NID(a) ((a >= NID_dilithium2) && (a <= NID__CROSSrsdp128balanced))
 /////// OQS_TEMPLATE_FRAGMENT_DEFINE_EVP_PKEYS_END
 const char *OQSKEM_options(void);
 const char *OQSSIG_options(void);
