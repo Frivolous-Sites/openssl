@@ -5555,12 +5555,3 @@
 #define LN_p521_mayo5           "p521_mayo5"
 #define NID_p521_mayo5          1275
 #define OBJ_p521_mayo5          1L,3L,9999L,8L,5L,2L
-
-#define SN_CROSSrsdp128balanced         "CROSSrsdp128balanced"
-#define LN_CROSSrsdp128balanced         "CROSSrsdp128balanced"
-#define NID_CROSSrsdp128balanced                1276
-#define OBJ_CROSSrsdp128balanced                1L,3L,6L,1L,4L,1L,62245L,2L,1L,1L
-
-#define SN__CROSSrsdp128balanced                "_CROSSrsdp128balanced"
-#define LN__CROSSrsdp128balanced                "_CROSSrsdp128balanced"
-#define NID__CROSSrsdp128balanced               1277

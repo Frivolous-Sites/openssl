@@ -338,10 +338,6 @@ static const char *get_sigtype(int nid)
         return "MAYO-5";
     case NID_p521_mayo5:
         return "ECDSA p521 - MAYO-5";
-    case NID_CROSSrsdp128balanced:
-        return "CROSS-rsdp-128-balanced";
-    case NID__CROSSrsdp128balanced:
-        return " - CROSS-rsdp-128-balanced";
 ///// OQS_TEMPLATE_FRAGMENT_SIG_NAME_STR_END
     default:
         return NULL;

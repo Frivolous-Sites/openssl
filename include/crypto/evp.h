@@ -155,9 +155,7 @@ extern const EVP_PKEY_METHOD p256_mayo2_pkey_meth;
 extern const EVP_PKEY_METHOD mayo3_pkey_meth;
 extern const EVP_PKEY_METHOD p384_mayo3_pkey_meth;
 extern const EVP_PKEY_METHOD mayo5_pkey_meth;
-extern const EVP_PKEY_METHOD p521_mayo5_pkey_meth;
-extern const EVP_PKEY_METHOD CROSSrsdp128balanced_pkey_meth;
-extern const EVP_PKEY_METHOD _CROSSrsdp128balanced_pkey_meth;///// OQS_TEMPLATE_FRAGMENT_DEFINE_EVP_METHS_END
+extern const EVP_PKEY_METHOD p521_mayo5_pkey_meth;///// OQS_TEMPLATE_FRAGMENT_DEFINE_EVP_METHS_END
 
 struct evp_md_st {
     int type;

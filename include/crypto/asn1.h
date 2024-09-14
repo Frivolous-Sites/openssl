@@ -129,9 +129,7 @@ extern const EVP_PKEY_ASN1_METHOD p256_mayo2_asn1_meth;
 extern const EVP_PKEY_ASN1_METHOD mayo3_asn1_meth;
 extern const EVP_PKEY_ASN1_METHOD p384_mayo3_asn1_meth;
 extern const EVP_PKEY_ASN1_METHOD mayo5_asn1_meth;
-extern const EVP_PKEY_ASN1_METHOD p521_mayo5_asn1_meth;
-extern const EVP_PKEY_ASN1_METHOD CROSSrsdp128balanced_asn1_meth;
-extern const EVP_PKEY_ASN1_METHOD _CROSSrsdp128balanced_asn1_meth;///// OQS_TEMPLATE_FRAGMENT_DEFINE_ASN1_METHS_END
+extern const EVP_PKEY_ASN1_METHOD p521_mayo5_asn1_meth;///// OQS_TEMPLATE_FRAGMENT_DEFINE_ASN1_METHS_END
 
 /*
  * These are used internally in the ASN1_OBJECT to keep track of whether the

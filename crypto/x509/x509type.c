@@ -91,8 +91,6 @@ int X509_certificate_type(const X509 *x, const EVP_PKEY *pkey)
     case EVP_PKEY_P384_MAYO3:
     case EVP_PKEY_MAYO5:
     case EVP_PKEY_P521_MAYO5:
-    case EVP_PKEY_CROSSRSDP128BALANCED:
-    case EVP_PKEY__CROSSRSDP128BALANCED:
 ///// OQS_TEMPLATE_FRAGMENT_LIST_SIG_SWITCH_CASES_END
         ret = EVP_PKT_SIGN;
         break;

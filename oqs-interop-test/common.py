@@ -42,7 +42,6 @@ signatures = [
     'mayo2',
     'mayo3',
     'mayo5',
-    'CROSSrsdp128balanced',
 ##### OQS_TEMPLATE_FRAGMENT_PQ_SIG_ALGS_END
 ]
 

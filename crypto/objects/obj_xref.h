@@ -129,8 +129,6 @@ static const nid_triple sigoid_srt[] = {
     {NID_p384_mayo3, NID_sha512, NID_p384_mayo3},
     {NID_mayo5, NID_sha512, NID_mayo5},
     {NID_p521_mayo5, NID_sha512, NID_p521_mayo5},
-    {NID_CROSSrsdp128balanced, NID_sha512, NID_CROSSrsdp128balanced},
-    {NID__CROSSrsdp128balanced, NID_sha512, NID__CROSSrsdp128balanced},
 };
 
 static const nid_triple *const sigoid_srt_xref[] = {
@@ -205,8 +203,6 @@ static const nid_triple *const sigoid_srt_xref[] = {
     &sigoid_srt[88],
     &sigoid_srt[89],
     &sigoid_srt[90],
-    &sigoid_srt[91],
-    &sigoid_srt[92],
     &sigoid_srt[16],
     &sigoid_srt[23],
     &sigoid_srt[19],

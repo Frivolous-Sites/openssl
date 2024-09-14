@@ -895,8 +895,6 @@ static const uint16_t tls12_sigalgs[] = {
     TLSEXT_SIGALG_p384_mayo3,
     TLSEXT_SIGALG_mayo5,
     TLSEXT_SIGALG_p521_mayo5,
-    TLSEXT_SIGALG_CROSSrsdp128balanced,
-    TLSEXT_SIGALG__CROSSrsdp128balanced,
 ///// OQS_TEMPLATE_FRAGMENT_DEFINE_TLS12_SIGALGS_END
 
     TLSEXT_SIGALG_rsa_pss_pss_sha256,
@@ -1155,12 +1153,6 @@ static const SIGALG_LOOKUP sigalg_lookup_tbl[] = {
      NID_undef, NID_undef},
     {"p521_mayo5", TLSEXT_SIGALG_p521_mayo5,
      NID_undef, -1, EVP_PKEY_P521_MAYO5, SSL_PKEY_P521_MAYO5,
-     NID_undef, NID_undef},
-    {"CROSSrsdp128balanced", TLSEXT_SIGALG_CROSSrsdp128balanced,
-     NID_undef, -1, EVP_PKEY_CROSSRSDP128BALANCED, SSL_PKEY_CROSSRSDP128BALANCED,
-     NID_undef, NID_undef},
-    {"_CROSSrsdp128balanced", TLSEXT_SIGALG__CROSSrsdp128balanced,
-     NID_undef, -1, EVP_PKEY__CROSSRSDP128BALANCED, SSL_PKEY__CROSSRSDP128BALANCED,
      NID_undef, NID_undef},
 ///// OQS_TEMPLATE_FRAGMENT_POPULATE_SIGALG_TBL_END
 };
@@ -1491,10 +1483,6 @@ static int sigalg_security_bits(const SIGALG_LOOKUP *lu)
             secbits = 256;
         else if(lu->sigalg == TLSEXT_SIGALG_p521_mayo5)
             secbits = 256;
-        else if(lu->sigalg == TLSEXT_SIGALG_CROSSrsdp128balanced)
-            secbits = 128;
-        else if(lu->sigalg == TLSEXT_SIGALG__CROSSrsdp128balanced)
-            secbits = 128;
 ///// OQS_TEMPLATE_FRAGMENT_MAP_SIGALG_TO_BIT_SECURITY_END
     }
     return secbits;
@@ -2954,8 +2942,6 @@ void tls1_set_cert_validity(SSL *s)
     tls1_check_chain(s, NULL, NULL, NULL, SSL_PKEY_P384_MAYO3);
     tls1_check_chain(s, NULL, NULL, NULL, SSL_PKEY_MAYO5);
     tls1_check_chain(s, NULL, NULL, NULL, SSL_PKEY_P521_MAYO5);
-    tls1_check_chain(s, NULL, NULL, NULL, SSL_PKEY_CROSSRSDP128BALANCED);
-    tls1_check_chain(s, NULL, NULL, NULL, SSL_PKEY__CROSSRSDP128BALANCED);
 ///// OQS_TEMPLATE_FRAGMENT_ADD_CERT_CHAIN_CHECKS_END
 }
 

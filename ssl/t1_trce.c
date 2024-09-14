@@ -659,8 +659,6 @@ static const ssl_trace_tbl ssl_sigalg_tbl[] = {
     {TLSEXT_SIGALG_p384_mayo3, "p384_mayo3"},
     {TLSEXT_SIGALG_mayo5, "mayo5"},
     {TLSEXT_SIGALG_p521_mayo5, "p521_mayo5"},
-    {TLSEXT_SIGALG_CROSSrsdp128balanced, "CROSSrsdp128balanced"},
-    {TLSEXT_SIGALG__CROSSrsdp128balanced, "_CROSSrsdp128balanced"},
 ///// OQS_TEMPLATE_FRAGMENT_POPULATE_SIGALG_TBL_END
 };
 

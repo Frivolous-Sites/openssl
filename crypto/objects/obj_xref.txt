@@ -67,8 +67,6 @@ mayo3	sha512	mayo3
 p384_mayo3	sha512	p384_mayo3
 mayo5	sha512	mayo5
 p521_mayo5	sha512	p521_mayo5
-CROSSrsdp128balanced	sha512	CROSSrsdp128balanced
-_CROSSrsdp128balanced	sha512	_CROSSrsdp128balanced
 ##### OQS_TEMPLATE_FRAGMENT_LIST_OQS_SIGS_END
 
 

@@ -289,10 +289,6 @@
 #define SSL_aMAYO5 0x2000000000000U
 /* ECDSA p521 - MAYO-5 auth */
 #define SSL_aP521_MAYO5 0x4000000000000U
-/* CROSS-rsdp-128-balanced auth */
-#define SSL_aCROSSRSDP128BALANCED 0x8000000000000U
-/*  - CROSS-rsdp-128-balanced auth */
-#define SSL_a_CROSSRSDP128BALANCED 0x10000000000000U
 ///// OQS_TEMPLATE_FRAGMENT_DEFINE_SIG_MASKS_END
 /* Any appropriate signature auth (for TLS 1.3 ciphersuites) */
 # define SSL_aANY                0x00000000U
@@ -520,10 +516,8 @@
 #define SSL_PKEY_P384_MAYO3 49
 #define SSL_PKEY_MAYO5 50
 #define SSL_PKEY_P521_MAYO5 51
-#define SSL_PKEY_CROSSRSDP128BALANCED 52
-#define SSL_PKEY__CROSSRSDP128BALANCED 53
 
-#define SSL_PKEY_NUM 54
+#define SSL_PKEY_NUM 52
 ///// OQS_TEMPLATE_FRAGMENT_DEFINE_SSL_PKEYS_END
 
 /*-
@@ -2403,8 +2397,6 @@ typedef enum downgrade_en {
 #define TLSEXT_SIGALG_p384_mayo3 0xfef4
 #define TLSEXT_SIGALG_mayo5 0xfef1
 #define TLSEXT_SIGALG_p521_mayo5 0xfef5
-#define TLSEXT_SIGALG_CROSSrsdp128balanced 0xfef6
-#define TLSEXT_SIGALG__CROSSrsdp128balanced 
 ///// OQS_TEMPLATE_FRAGMENT_DEFINE_SIG_CODE_POINTS_END
 
 /* Known PSK key exchange modes */

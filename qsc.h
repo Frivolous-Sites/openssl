@@ -83,8 +83,6 @@
     { 0xfef4, "p384_mayo3" }, \
     { 0xfef1, "mayo5" }, \
     { 0xfef5, "p521_mayo5" }, \
-    { 0xfef6, "CROSSrsdp128balanced" }, \
-    { , "_CROSSrsdp128balanced" }, \
 ///// OQS_TEMPLATE_FRAGMENT_ASSIGN_SIG_CPS_END
 
 ///// OQS_TEMPLATE_FRAGMENT_ASSIGN_SIG_OIDS_START
@@ -132,8 +130,6 @@
 	oid_add_from_string("p384_mayo3", "1.3.9999.8.3.2"); \
 	oid_add_from_string("mayo5", "1.3.9999.8.5.1"); \
 	oid_add_from_string("p521_mayo5", "1.3.9999.8.5.2"); \
-	oid_add_from_string("CROSSrsdp128balanced", "1.3.6.1.4.1.62245.2.1.1"); \
-	oid_add_from_string("_CROSSrsdp128balanced", ""); \
 
 
 ///// OQS_TEMPLATE_FRAGMENT_ASSIGN_SIG_OIDS_END

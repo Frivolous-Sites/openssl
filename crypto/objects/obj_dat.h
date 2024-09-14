@@ -10,7 +10,7 @@
  */
 
 /* Serialized OID's */
-static const unsigned char so[8041] = {
+static const unsigned char so[8030] = {
     0x2A,0x86,0x48,0x86,0xF7,0x0D,                 /* [    0] OBJ_rsadsi */
     0x2A,0x86,0x48,0x86,0xF7,0x0D,0x01,            /* [    6] OBJ_pkcs */
     0x2A,0x86,0x48,0x86,0xF7,0x0D,0x02,0x02,       /* [   13] OBJ_md2 */
@@ -1119,10 +1119,9 @@ static const unsigned char so[8041] = {
     0x2B,0xCE,0x0F,0x08,0x03,0x02,                 /* [ 8011] OBJ_p384_mayo3 */
     0x2B,0xCE,0x0F,0x08,0x05,0x01,                 /* [ 8017] OBJ_mayo5 */
     0x2B,0xCE,0x0F,0x08,0x05,0x02,                 /* [ 8023] OBJ_p521_mayo5 */
-    0x2B,0x06,0x01,0x04,0x01,0x83,0xE6,0x25,0x02,0x01,0x01,  /* [ 8029] OBJ_CROSSrsdp128balanced */
 };
 
-#define NUM_NID 1278
+#define NUM_NID 1276
 static const ASN1_OBJECT nid_objs[NUM_NID] = {
     {"UNDEF", "undefined", NID_undef},
     {"rsadsi", "RSA Data Security, Inc.", NID_rsadsi, 6, &so[0]},
@@ -2400,11 +2399,9 @@ static const ASN1_OBJECT nid_objs[NUM_NID] = {
     {"p384_mayo3", "p384_mayo3", NID_p384_mayo3, 6, &so[8011]},
     {"mayo5", "mayo5", NID_mayo5, 6, &so[8017]},
     {"p521_mayo5", "p521_mayo5", NID_p521_mayo5, 6, &so[8023]},
-    {"CROSSrsdp128balanced", "CROSSrsdp128balanced", NID_CROSSrsdp128balanced, 11, &so[8029]},
-    {"_CROSSrsdp128balanced", "_CROSSrsdp128balanced", NID__CROSSrsdp128balanced},
 };
 
-#define NUM_SN 1267
+#define NUM_SN 1265
 static const unsigned int sn_objs[NUM_SN] = {
      364,    /* "AD_DVCS" */
      419,    /* "AES-128-CBC" */
@@ -2519,7 +2516,6 @@ static const unsigned int sn_objs[NUM_SN] = {
      894,    /* "CMAC" */
       13,    /* "CN" */
      141,    /* "CRLReason" */
-    1276,    /* "CROSSrsdp128balanced" */
      417,    /* "CSPName" */
     1019,    /* "ChaCha20" */
     1018,    /* "ChaCha20-Poly1305" */
@@ -2697,7 +2693,6 @@ static const unsigned int sn_objs[NUM_SN] = {
      184,    /* "X9-57" */
      185,    /* "X9cm" */
      125,    /* "ZLIB" */
-    1277,    /* "_CROSSrsdp128balanced" */
      478,    /* "aRecord" */
      289,    /* "aaControls" */
      287,    /* "ac-auditEntity" */
@@ -3675,7 +3670,7 @@ static const unsigned int sn_objs[NUM_SN] = {
     1093,    /* "x509ExtAdmission" */
 };
 
-#define NUM_LN 1267
+#define NUM_LN 1265
 static const unsigned int ln_objs[NUM_LN] = {
      363,    /* "AD Time Stamping" */
      405,    /* "ANSI X9.62" */
@@ -3689,7 +3684,6 @@ static const unsigned int ln_objs[NUM_LN] = {
      785,    /* "CA Repository" */
     1131,    /* "CMC Certificate Authority" */
     1132,    /* "CMC Registration Authority" */
-    1276,    /* "CROSSrsdp128balanced" */
      954,    /* "CT Certificate SCTs" */
      952,    /* "CT Precertificate Poison" */
      951,    /* "CT Precertificate SCTs" */
@@ -3883,7 +3877,6 @@ static const unsigned int ln_objs[NUM_LN] = {
      920,    /* "X9.42 DH" */
      184,    /* "X9.57" */
      185,    /* "X9.57 CM ?" */
-    1277,    /* "_CROSSrsdp128balanced" */
      478,    /* "aRecord" */
      289,    /* "aaControls" */
      287,    /* "ac-auditEntity" */
@@ -4946,7 +4939,7 @@ static const unsigned int ln_objs[NUM_LN] = {
      125,    /* "zlib compression" */
 };
 
-#define NUM_OBJ 1115
+#define NUM_OBJ 1114
 static const unsigned int obj_objs[NUM_OBJ] = {
        0,    /* OBJ_undef                        0 */
      181,    /* OBJ_iso                          1 */
@@ -6049,7 +6042,6 @@ static const unsigned int obj_objs[NUM_OBJ] = {
      955,    /* OBJ_jurisdictionLocalityName     1 3 6 1 4 1 311 60 2 1 1 */
      956,    /* OBJ_jurisdictionStateOrProvinceName 1 3 6 1 4 1 311 60 2 1 2 */
      957,    /* OBJ_jurisdictionCountryName      1 3 6 1 4 1 311 60 2 1 3 */
-    1276,    /* OBJ_CROSSrsdp128balanced         1 3 6 1 4 1 62245 2 1 1 */
     1056,    /* OBJ_blake2b512                   1 3 6 1 4 1 1722 12 2 1 16 */
     1057,    /* OBJ_blake2s256                   1 3 6 1 4 1 1722 12 2 2 8 */
     1159,    /* OBJ_dstu4145be                   1 2 804 2 1 1 1 1 3 1 1 1 1 */

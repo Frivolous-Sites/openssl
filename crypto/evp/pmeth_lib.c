@@ -112,8 +112,6 @@ static const EVP_PKEY_METHOD *standard_methods[] = {
     &p384_mayo3_pkey_meth,
     &mayo5_pkey_meth,
     &p521_mayo5_pkey_meth,
-    &CROSSrsdp128balanced_pkey_meth,
-    &_CROSSrsdp128balanced_pkey_meth,
 ///// OQS_TEMPLATE_FRAGMENT_LIST_PKEY_METHS_END
 };
 

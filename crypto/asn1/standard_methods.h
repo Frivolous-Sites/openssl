@@ -103,7 +103,5 @@ static const EVP_PKEY_ASN1_METHOD *standard_methods[] = {
     &p384_mayo3_asn1_meth,
     &mayo5_asn1_meth,
     &p521_mayo5_asn1_meth,
-    &CROSSrsdp128balanced_asn1_meth,
-    &_CROSSrsdp128balanced_asn1_meth,
 ///// OQS_TEMPLATE_FRAGMENT_SIG_ASN1_METHS_END
 };

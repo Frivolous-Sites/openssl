@@ -1,6 +1,5 @@
 | Algorithm                                         | Implementation Version                          | NIST round   |   Claimed NIST Level | Code Point   | OID                      |
 |:--------------------------------------------------|:------------------------------------------------|:-------------|---------------------:|:-------------|:-------------------------|
-| CROSSrsdp128balanced                              | 1.2 + Keccak_x4 + PQClean fixes                 | 1            |                    1 | 0xfef6       | 1.3.6.1.4.1.62245.2.1.1  |
 | dilithium2                                        | 3.1                                             | 3            |                    2 | 0xfea0       | 1.3.6.1.4.1.2.267.7.4.4  |
 | dilithium2 **hybrid with** p256                   | 3.1                                             | 3            |                    2 | 0xfea1       | 1.3.9999.2.7.1           |
 | dilithium2 **hybrid with** rsa3072                | 3.1                                             | 3            |                    2 | 0xfea2       | 1.3.9999.2.7.2           |
