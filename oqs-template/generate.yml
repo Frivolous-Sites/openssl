@@ -603,7 +603,7 @@ sigs:
         name: 'sphincssha2128fsimple'
         pretty_name: 'SPHINCS+-SHA2-128f-simple'
         oqs_meth: 'OQS_SIG_alg_sphincs_sha2_128f_simple'
-        oid: '1.3.9999.6.4.13'
+        oid: '2.16.840.1.101.3.4.3.21'
         code_point: '0xfeb3'
         supported_encodings: ['draft-uni-qsckeys-sphincsplus-00/sk-pk']
         enable: true
@@ -653,7 +653,7 @@ sigs:
         name: 'sphincssha2128ssimple'
         pretty_name: 'SPHINCS+-SHA2-128s-simple'
         oqs_meth: 'OQS_SIG_alg_sphincs_sha2_128s_simple'
-        oid: '1.3.9999.6.4.16'
+        oid: '2.16.840.1.101.3.4.3.20'
         code_point: '0xfeb6'
         supported_encodings: ['draft-uni-qsckeys-sphincsplus-00/sk-pk']
         enable: true
@@ -699,7 +699,7 @@ sigs:
         name: 'sphincssha2192fsimple'
         pretty_name: 'SPHINCS+-SHA2-192f-simple'
         oqs_meth: 'OQS_SIG_alg_sphincs_sha2_192f_simple'
-        oid: '1.3.9999.6.5.10'
+        oid: '2.16.840.1.101.3.4.3.23'
         code_point: '0xfeb9'
         supported_encodings: ['draft-uni-qsckeys-sphincsplus-00/sk-pk']
         enable: true
@@ -737,7 +737,7 @@ sigs:
         name: 'sphincssha2192ssimple'
         pretty_name: 'SPHINCS+-SHA2-192s-simple'
         oqs_meth: 'OQS_SIG_alg_sphincs_sha2_192s_simple'
-        oid: '1.3.9999.6.5.12'
+        oid: '2.16.840.1.101.3.4.3.22'
         code_point: '0xfebb'
         supported_encodings: ['draft-uni-qsckeys-sphincsplus-00/sk-pk']
         enable: false
@@ -775,7 +775,7 @@ sigs:
         name: 'sphincssha2256fsimple'
         pretty_name: 'SPHINCS+-SHA2-256f-simple'
         oqs_meth: 'OQS_SIG_alg_sphincs_sha2_256f_simple'
-        oid: '1.3.9999.6.6.10'
+        oid: '2.16.840.1.101.3.4.3.25'
         code_point: '0xfebd'
         supported_encodings: ['draft-uni-qsckeys-sphincsplus-00/sk-pk']
         enable: false
@@ -813,7 +813,7 @@ sigs:
         name: 'sphincssha2256ssimple'
         pretty_name: 'SPHINCS+-SHA2-256s-simple'
         oqs_meth: 'OQS_SIG_alg_sphincs_sha2_256s_simple'
-        oid: '1.3.9999.6.6.12'
+        oid: '2.16.840.1.101.3.4.3.24'
         code_point: '0xfec0'
         supported_encodings: ['draft-uni-qsckeys-sphincsplus-00/sk-pk']
         enable: false
@@ -858,7 +858,7 @@ sigs:
         name: 'sphincsshake128fsimple'
         pretty_name: 'SPHINCS+-SHAKE-128f-simple'
         oqs_meth: 'OQS_SIG_alg_sphincs_shake_128f_simple'
-        oid: '1.3.9999.6.7.13'
+        oid: '2.16.840.1.101.3.4.3.27'
         code_point: '0xfec2'
         supported_encodings: ['draft-uni-qsckeys-sphincsplus-00/sk-pk']
         enable: true
@@ -908,7 +908,7 @@ sigs:
         name: 'sphincsshake128ssimple'
         pretty_name: 'SPHINCS+-SHAKE-128s-simple'
         oqs_meth: 'OQS_SIG_alg_sphincs_shake_128s_simple'
-        oid: '1.3.9999.6.7.16'
+        oid: '2.16.840.1.101.3.4.3.26'
         code_point: '0xfec5'
         supported_encodings: ['draft-uni-qsckeys-sphincsplus-00/sk-pk']
         enable: false
@@ -954,7 +954,7 @@ sigs:
         name: 'sphincsshake192fsimple'
         pretty_name: 'SPHINCS+-SHAKE-192f-simple'
         oqs_meth: 'OQS_SIG_alg_sphincs_shake_192f_simple'
-        oid: '1.3.9999.6.8.10'
+        oid: '2.16.840.1.101.3.4.3.29'
         code_point: '0xfec8'
         supported_encodings: ['draft-uni-qsckeys-sphincsplus-00/sk-pk']
         enable: false
@@ -992,7 +992,7 @@ sigs:
         name: 'sphincsshake192ssimple'
         pretty_name: 'SPHINCS+-SHAKE-192s-simple'
         oqs_meth: 'OQS_SIG_alg_sphincs_shake_192s_simple'
-        oid: '1.3.9999.6.8.12'
+        oid: '2.16.840.1.101.3.4.3.28'
         code_point: '0xfeca'
         supported_encodings: ['draft-uni-qsckeys-sphincsplus-00/sk-pk']
         enable: false
@@ -1030,7 +1030,7 @@ sigs:
         name: 'sphincsshake256fsimple'
         pretty_name: 'SPHINCS+-SHAKE-256f-simple'
         oqs_meth: 'OQS_SIG_alg_sphincs_shake_256f_simple'
-        oid: '1.3.9999.6.9.10'
+        oid: '2.16.840.1.101.3.4.3.31'
         code_point: '0xfecc'
         supported_encodings: ['draft-uni-qsckeys-sphincsplus-00/sk-pk']
         enable: false
@@ -1068,7 +1068,7 @@ sigs:
         name: 'sphincsshake256ssimple'
         pretty_name: 'SPHINCS+-SHAKE-256s-simple'
         oqs_meth: 'OQS_SIG_alg_sphincs_shake_256s_simple'
-        oid: '1.3.9999.6.9.12'
+        oid: '2.16.840.1.101.3.4.3.30'
         code_point: '0xfece'
         supported_encodings: ['draft-uni-qsckeys-sphincsplus-00/sk-pk']
         enable: false
